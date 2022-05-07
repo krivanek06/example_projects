@@ -1,0 +1,13 @@
+<ng-container [ngSwitch]="buttonType">
+  <!-- add button -->
+  <button *ngSwitchCase="'add'" mat-flat-button color="primary" (click)="onClick()">
+    <mat-icon>add</mat-icon>
+    add
+  </button>
+
+  <!-- remove button -->
+  <button *ngSwitchCase="'remove'" mat-flat-button color="accent" (click)="onClick()">
+    <mat-icon>delete</mat-icon>
+    remove
+  </button>
+</ng-container>

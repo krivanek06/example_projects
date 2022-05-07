@@ -1,0 +1,5 @@
+<div class="c-item-wrapper">
+  <span>{{ displayText }}</span>
+  <ct-test-ui-button *ngIf="showAddButton" (clickEmitter)="onAddClick()"></ct-test-ui-button>
+  <ct-test-ui-button *ngIf="showRemoveButton" buttonType="remove" (clickEmitter)="onRemoveClick()"></ct-test-ui-button>
+</div>

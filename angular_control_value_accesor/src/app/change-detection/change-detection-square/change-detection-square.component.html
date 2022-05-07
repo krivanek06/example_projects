@@ -1,0 +1,21 @@
+<div class="c-wrapper">
+	<div class="flex flex-col">
+		<span class="text-lg font-bold text-orange-500"> {{ title }} : {{ intervalNumber }}</span>
+		<span class="text-base text-orange-400 break-all"> {{ name.value }} </span>
+	</div>
+
+	<form [formGroup]="form" (ngSubmit)="submit()">
+		<!-- input -->
+		<mat-form-field appearance="outline">
+			<mat-label>Add name</mat-label>
+			<input matInput formControlName="name" placeholder="place some value here" [autocomplete]="false" />
+		</mat-form-field>
+
+		<!-- button -->
+		<button mat-flat-button color="primary" class="w-full mt-2" type="submit">Add item</button>
+	</form>
+</div>
+
+<div class="flex gap-6">
+	<ng-content></ng-content>
+</div>

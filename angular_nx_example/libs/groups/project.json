@@ -1,0 +1,28 @@
+{
+  "projectType": "library",
+  "root": "libs/groups",
+  "sourceRoot": "libs/groups/src",
+  "prefix": "ct-test",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/groups"
+      ],
+      "options": {
+        "jestConfig": "libs/groups/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/groups/src/**/*.ts",
+          "libs/groups/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

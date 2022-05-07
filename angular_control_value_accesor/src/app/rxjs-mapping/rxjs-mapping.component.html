@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+	<app-card-wrapper title="Switch Map">
+		<mat-form-field appearance="outline" class="w-full">
+			<mat-label>Switch map</mat-label>
+			<input matInput formControlName="switchMapField" [autocomplete]="false" />
+		</mat-form-field>
+	</app-card-wrapper>
+
+	<app-card-wrapper title="Exhaust Map">
+		<mat-form-field appearance="outline" class="w-full">
+			<mat-label>Exhaust map</mat-label>
+			<input matInput formControlName="exhaustMapField" [autocomplete]="false" />
+		</mat-form-field>
+	</app-card-wrapper>
+
+	<app-card-wrapper title="Concat Map">
+		<mat-form-field appearance="outline" class="w-full">
+			<mat-label>Concat map</mat-label>
+			<input matInput formControlName="concatMapField" [autocomplete]="false" />
+		</mat-form-field>
+	</app-card-wrapper>
+
+	<app-card-wrapper title="Merge Map">
+		<mat-form-field appearance="outline" class="w-full">
+			<mat-label>Merge map</mat-label>
+			<input matInput formControlName="margeMapField" [autocomplete]="false" />
+		</mat-form-field>
+	</app-card-wrapper>
+</form>

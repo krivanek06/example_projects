@@ -1,0 +1,9 @@
+<div class="c-wrapper">
+  <ct-test-ui-item
+    *ngFor="let user of allTestUsers"
+    (addClickEmitter)="onAddClick(user)"
+    (removeClickEmitter)="onRemoveClick(user)"
+    [showAddButton]="true"
+    [displayText]="user.displayName"
+  ></ct-test-ui-item>
+</div>

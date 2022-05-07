@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-1 p-4">
+	<ng-container *ngFor="let country of countries">
+		<button
+			mat-stroked-button
+			[disabled]="disabled"
+			(click)="selectCountry(country.code)"
+			[class.selected]="!disabled && selected === country.code"
+		>
+			<div class="flex gap-4 items-center">
+				<span [class]="'flag-icon flag-icon-' +  (country.code | lowercase) "></span>
+				<span>{{ country.name }}</span>
+				<mat-icon *ngIf="!disabled && selected === country.code" class="primary">checked</mat-icon>
+			</div>
+		</button>
+	</ng-container>
+</div>

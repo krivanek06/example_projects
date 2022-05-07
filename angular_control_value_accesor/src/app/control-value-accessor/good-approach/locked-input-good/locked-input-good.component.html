@@ -1,0 +1,4 @@
+<small>Locked:</small>
+<mat-icon (click)="setValue()" [ngClass]="{'c-disabled': disabled}">
+	{{ value ? 'lock' : 'lock_open' }}
+</mat-icon>

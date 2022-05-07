@@ -1,0 +1,42 @@
+<form [formGroup]="form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+	<div class="flex flex-col gap-4">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Choose country</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<app-cva-flag-select formControlName="country"></app-cva-flag-select>
+			</mat-card-content>
+		</mat-card>
+
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Rate me</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<app-cva-rating formControlName="rating"></app-cva-rating>
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title>Search animal</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<div class="py-2">
+				<app-cva-animal-search formControlName="animals"></app-cva-animal-search>
+			</div>
+			<mat-divider></mat-divider>
+			<!-- display selected -->
+			<div class="py-2">
+				<h2>Selected animal</h2>
+				<app-animal-display
+					*ngFor="let animal of animals.value"
+					(click)="onAnimalRemove(animal)"
+					[animal]="animal"
+				></app-animal-display>
+			</div>
+		</mat-card-content>
+	</mat-card>
+</form>

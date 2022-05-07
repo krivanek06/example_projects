@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+	<fieldset [disabled]="isLocked.value">
+		<mat-form-field appearance="outline" class="w-full">
+			<mat-label>Add name</mat-label>
+			<input
+				matInput
+				formControlName="name"
+				placeholder="place some value here"
+				[autocomplete]="false"
+			/>
+		</mat-form-field>
+	</fieldset>
+
+	<!-- lock -->
+	<app-locked-input-good formControlName="isLocked"></app-locked-input-good>
+
+	<!-- button -->
+	<button
+		mat-flat-button
+		color="primary"
+		class="w-full mt-2"
+		type="submit"
+		[disabled]="!form.touched"
+	>
+		<mat-icon>add</mat-icon>
+		Add item
+	</button>
+</form>

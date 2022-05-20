@@ -5,3 +5,4 @@ npx nodemon XX
 source to TS tips:
 
 - https://www.youtube.com/watch?v=hBk4nV7q6-w&ab_channel=VisualStudioCode
+- https://www.youtube.com/watch?v=eJ6R1knfsoc

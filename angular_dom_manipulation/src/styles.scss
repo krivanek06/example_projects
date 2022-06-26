@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.g-basic-highlight {
+  transition: All 0.3s ease-out !important;
+  cursor: pointer !important;
+
+  &:hover {
+    transform: scale(1.03) !important;
+  }
+}
+
+.g-present-box {
+  background-color: red !important;
+}
+
+.g-highlight {
+  background-color: blue !important;
+}

@@ -1,0 +1,17 @@
+<!-- menu -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>DOM manipulation</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/example-1'"> Example-1 </a>
+      <a mat-button [routerLink]="'/example-2'"> Example-2 </a>
+      <a mat-button [routerLink]="'/example-3'"> Example-3 </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- routing -->
+<div class="c-wrapper">
+  <router-outlet></router-outlet>
+</div>

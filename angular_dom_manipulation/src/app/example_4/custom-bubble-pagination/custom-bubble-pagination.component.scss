@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  gap: 8px;
+
+  .c-disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+    color: #a4acb7;
+    &:hover {
+      background-color: #dfe1e7 !important;
+    }
+  }
+}

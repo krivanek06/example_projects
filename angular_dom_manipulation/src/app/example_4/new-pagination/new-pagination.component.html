@@ -1,0 +1,43 @@
+<h1>Example of New pagination</h1>
+
+<!-- table of users -->
+<table mat-table [dataSource]="dataSource">
+  <!-- firstname -->
+  <ng-container matColumnDef="firstname">
+    <th mat-header-cell *matHeaderCellDef>First name</th>
+    <td mat-cell *matCellDef="let row">{{ row.firstname }}</td>
+  </ng-container>
+
+  <!-- lastname -->
+  <ng-container matColumnDef="lastname">
+    <th mat-header-cell *matHeaderCellDef>Last name</th>
+    <td mat-cell *matCellDef="let row">{{ row.lastname }}</td>
+  </ng-container>
+
+  <!-- number -->
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef>Number</th>
+    <td mat-cell *matCellDef="let row">{{ row.number }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<!-- OLD solution: bubble pagination -->
+<!-- <div class="c-bubble-wrapper">
+  <app-custom-bubble-pagination
+    (changePageEmitter)="onPageChange($event)"
+    [totalData]="exampleUsers.length"
+    [paginationLength]="paginationLength"
+  ></app-custom-bubble-pagination>
+</div> -->
+
+<!-- NEW solution: bubble pagination -->
+<mat-paginator
+  appStylePaginator
+  showFirstLastButtons
+  [length]="exampleUsers.length"
+  [appCustomLength]="exampleUsers.length"
+  [pageSize]="paginationLength"
+></mat-paginator>

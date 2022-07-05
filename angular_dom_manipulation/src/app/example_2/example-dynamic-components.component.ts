@@ -1,10 +1,15 @@
-import { Component, ComponentRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import {
-  FakedResponseData,
-  getAsyncResponse,
-  getSyncResponse,
-  PluginComponent,
-} from './example-dynamic-components.model';
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ComponentRef,
+  DoCheck,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { FakedResponseData, getSyncResponse, PluginComponent } from './example-dynamic-components.model';
 import { PluginOneComponent } from './plugin-one/plugin-one.component';
 import { PluginTwoComponent } from './plugin-two/plugin-two.component';
 
@@ -13,28 +18,49 @@ import { PluginTwoComponent } from './plugin-two/plugin-two.component';
   templateUrl: './example-dynamic-components.component.html',
   styleUrls: ['./example-dynamic-components.component.scss'],
 })
-export class ExampleDynamicComponentsComponent implements OnInit, OnDestroy {
-  // sync template -> static: true because we render before AfterViewInit life cycle
-  @ViewChild('dynamicSyncTemplate1', { static: true, read: ViewContainerRef })
-  dynamicSyncTemplate1!: ViewContainerRef;
+export class ExampleDynamicComponentsComponent implements OnInit, AfterViewInit, OnDestroy, DoCheck {
+  // basic templates
+  @ViewChild('template1', { static: true, read: ViewContainerRef })
+  template1!: ViewContainerRef;
 
-  @ViewChild('dynamicSyncTemplate2', { static: false, read: ViewContainerRef })
-  dynamicSyncTemplate2!: ViewContainerRef;
+  @ViewChild('template2', { static: false, read: ViewContainerRef })
+  template2!: ViewContainerRef;
 
-  // dynamic template
-  @ViewChild('dynamicAsyncTemplate', { read: ViewContainerRef })
-  dynamicAsyncTemplate!: ViewContainerRef;
+  // template inside ngIf
+  @ViewChild('template3', { static: false, read: ViewContainerRef })
+  template3!: ViewContainerRef;
+
+  isTemplate3Visible = false;
 
   // reference to all dynamic components that we can delete them
-  templateRef: ComponentRef<PluginComponent>[] = [];
+  private templateRef: ComponentRef<PluginComponent>[] = [];
 
-  constructor() {}
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    getSyncResponse().forEach((data) => this.generateDynamicComponents(this.dynamicSyncTemplate1, data));
+    this.generateForViewRef(this.template1);
 
-    // this will result in error
-    // getSyncResponse().forEach((data) => this.generateDynamicComponents(this.dynamicSyncTemplate2, data));
+    // error: undefined
+    // this.generateForViewRef(this.template2);
+  }
+
+  ngDoCheck(): void {
+    console.log('ngDoCheck');
+  }
+
+  ngAfterViewInit(): void {
+    // Error: ExpressionChangedAfterItHasBeenCheckedError
+    this.generateForViewRef(this.template2);
+    // this.cd.detectChanges();
+
+    setTimeout(() => {
+      this.isTemplate3Visible = true;
+    }, 200);
+  }
+
+  onGetDataClick(): void {
+    this.generateForViewRef(this.template3);
+    // this.generateForViewRef(this.template2);
   }
 
   ngOnDestroy(): void {
@@ -46,9 +72,8 @@ export class ExampleDynamicComponentsComponent implements OnInit, OnDestroy {
     });
   }
 
-  onGetDataClick(): void {
-    const data$ = getAsyncResponse();
-    data$.subscribe((data) => data.forEach((d) => this.generateDynamicComponents(this.dynamicAsyncTemplate, d)));
+  private generateForViewRef(viewContainerRef: ViewContainerRef): void {
+    getSyncResponse().forEach((data) => this.generateDynamicComponents(viewContainerRef, data));
   }
 
   private generateDynamicComponents(viewRef: ViewContainerRef, response: FakedResponseData): void {

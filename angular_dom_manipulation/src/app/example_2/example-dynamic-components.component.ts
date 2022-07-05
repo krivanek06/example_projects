@@ -15,8 +15,11 @@ import { PluginTwoComponent } from './plugin-two/plugin-two.component';
 })
 export class ExampleDynamicComponentsComponent implements OnInit, OnDestroy {
   // sync template -> static: true because we render before AfterViewInit life cycle
-  @ViewChild('dynamicSyncTemplate', { static: true, read: ViewContainerRef })
-  dynamicSyncTemplate!: ViewContainerRef;
+  @ViewChild('dynamicSyncTemplate1', { static: true, read: ViewContainerRef })
+  dynamicSyncTemplate1!: ViewContainerRef;
+
+  @ViewChild('dynamicSyncTemplate2', { static: false, read: ViewContainerRef })
+  dynamicSyncTemplate2!: ViewContainerRef;
 
   // dynamic template
   @ViewChild('dynamicAsyncTemplate', { read: ViewContainerRef })
@@ -28,10 +31,12 @@ export class ExampleDynamicComponentsComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    getSyncResponse().forEach((data) => this.generateDynamicComponents(this.dynamicSyncTemplate, data));
+    getSyncResponse().forEach((data) => this.generateDynamicComponents(this.dynamicSyncTemplate1, data));
+
+    // this will result in error
+    // getSyncResponse().forEach((data) => this.generateDynamicComponents(this.dynamicSyncTemplate2, data));
   }
 
-  // TODO how to check if components still live in memory - heap ? Erik ?
   ngOnDestroy(): void {
     console.log('Called onDestroy');
     this.templateRef.forEach((d) => {

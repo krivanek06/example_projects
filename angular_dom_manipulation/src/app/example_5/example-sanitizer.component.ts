@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { of } from 'rxjs';
-import { exampleScript2, exampleVideo } from './example_5_data.model';
+import { exampleScript2, exampleVideo, isValidUrl } from './example_5_data.model';
 
 @Component({
   selector: 'app-example-sanitizer',
@@ -42,8 +42,11 @@ export class ExampleSanitizerComponent implements OnInit {
       // will result in error
       //this.safeUrl = res;
 
-      // ok solution
+      // will result in error
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(res);
+
+      console.log('exampleVideo', isValidUrl(exampleVideo));
+      console.log('exampleScript2', isValidUrl(exampleScript2));
     });
   }
 }

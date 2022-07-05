@@ -17,6 +17,7 @@ import { PluginTwoComponent } from './plugin-two/plugin-two.component';
   selector: 'app-example-dynamic-components',
   templateUrl: './example-dynamic-components.component.html',
   styleUrls: ['./example-dynamic-components.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleDynamicComponentsComponent implements OnInit, AfterViewInit, OnDestroy, DoCheck {
   // basic templates
@@ -49,7 +50,7 @@ export class ExampleDynamicComponentsComponent implements OnInit, AfterViewInit,
   }
 
   ngAfterViewInit(): void {
-    // Error: ExpressionChangedAfterItHasBeenCheckedError
+    // Error: ExpressionChangedAfterItHasBeenCheckedError -> uncomment detect changes
     this.generateForViewRef(this.template2);
     // this.cd.detectChanges();
 
@@ -59,8 +60,9 @@ export class ExampleDynamicComponentsComponent implements OnInit, AfterViewInit,
   }
 
   onGetDataClick(): void {
+    // Error if OnPush is set & change detection not called
+    // this.cd.detectChanges();
     this.generateForViewRef(this.template3);
-    // this.generateForViewRef(this.template2);
   }
 
   ngOnDestroy(): void {

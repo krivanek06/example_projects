@@ -1,9 +1,15 @@
-<div class='content'>
-  <app-widget-wrapper header='Weather'>
-    <app-weather-widget wrapperBody></app-weather-widget>
-  </app-widget-wrapper>
+<!-- menu -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>DOM manipulation</h1>
+    <div>
+      <a mat-button [routerLink]="'/example-1'"> Example-1 Widgets </a>
+      <a mat-button [routerLink]="'/example-2'"> Example-2 Inject</a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-  <app-widget-wrapper header='Planning'>
-    <app-planning-widget wrapperBody></app-planning-widget>
-  </app-widget-wrapper>
+<!-- routing -->
+<div class="c-wrapper">
+  <router-outlet></router-outlet>
 </div>

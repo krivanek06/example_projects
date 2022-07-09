@@ -1,19 +1,21 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title> {{ header }} </mat-card-title>
-    <button mat-raised-button color="primary" (click)="refresh()">Refresh</button>
+    <button mat-raised-button color="primary" (click)="refresh()">
+      Refresh
+    </button>
   </mat-card-header>
 
   <mat-divider></mat-divider>
 
   <mat-card-content>
-    <mat-spinner *ngIf="isRefreshing" diameret='20'></mat-spinner>
-    <div [class.refresh-content]='isRefreshing'>
+    <mat-spinner *ngIf="isRefreshing" diameter="80"></mat-spinner>
+    <div [class.refresh-content]="isRefreshing">
       <ng-content select="[wrapperBody]"></ng-content>
     </div>
   </mat-card-content>
 
   <mat-card-footer>
-    <ng-content sekect="[wrapperFooter]"></ng-content>
+    <ng-content select="[wrapperFooter]"></ng-content>
   </mat-card-footer>
 </mat-card>

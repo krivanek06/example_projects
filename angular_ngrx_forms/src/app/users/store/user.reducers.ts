@@ -1,8 +1,16 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { createFormStateReducerWithUpdate, FormGroupState, updateGroup, validate } from 'ngrx-forms';
+import {
+  AbstractControlState,
+  createFormStateReducerWithUpdate,
+  FormGroupState,
+  updateGroup,
+  validate,
+  ValidationFn,
+} from 'ngrx-forms';
 import { greaterThanOrEqualTo, minLength, required } from 'ngrx-forms/validation';
 import { initialUserFormState, User, UserForm, UserFormConfig, UserFormState, USER_FEATURE_KEY } from '../models/user.model';
+import { minAgeValidation, noChris } from '../models/user.validation';
 import { UserActions, UserActionTypes } from './user.actions';
 
 const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({
@@ -10,17 +18,29 @@ const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({
 });
 
 export const userFormGroupReducer = createFormStateReducerWithUpdate<UserFormState>(
-  updateGroup<UserFormState>({
-    user: updateGroup<UserForm>({
-      name: validate(required),
-      age: validate(required),
-      gender: validate(required),
-      additionalInfo: validate([minLength(4)]),
-    }),
-    config: updateGroup<UserFormConfig>({
-      minAge: validate([required, greaterThanOrEqualTo(0)]),
-    }),
-  })
+  updateGroup<UserFormState>(
+    {
+      user: updateGroup<UserForm>({
+        name: validate([required, minLength(4), noChris]),
+        age: validate(required),
+        gender: validate(required),
+        additionalInfo: validate([minLength(4)]),
+      }),
+      config: updateGroup<UserFormConfig>({
+        minAge: validate([required, greaterThanOrEqualTo(0)]),
+      }),
+    },
+    {
+      // validate user's age more than config.age
+      user: (user: FormGroupState<UserForm>, rootForm: FormGroupState<UserFormState>) =>
+        updateGroup<UserForm>({
+          age: (age: AbstractControlState<number>) => {
+            const minAgeValue = (rootForm.controls.config as FormGroupState<UserFormConfig>).controls.minAge.value;
+            return validate<number>(age, minAgeValidation(minAgeValue) as ValidationFn<number>);
+          },
+        })(user),
+    }
+  )
 );
 
 export interface UserStoreState extends EntityState<User> {
@@ -70,4 +90,6 @@ export const { selectIds, selectEntities, selectAll, selectTotal } = userAdapter
 
 export const selectUserById = (userId: number) => createSelector(selectUserState, (userState) => userState.entities[userId]);
 export const selectUserForm = createSelector(selectUserState, (userState) => userState.userForm);
+export const selectUserFormCreate = createSelector(selectUserForm, (userForm) => userForm.controls.user);
+export const selectUserFormConfig = createSelector(selectUserForm, (userForm) => userForm.controls.config);
 export const selectUsersTotal = createSelector(selectUserState, selectTotal);

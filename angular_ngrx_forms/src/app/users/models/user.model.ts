@@ -39,12 +39,6 @@ export const initialUserFormState = createFormGroupState<UserFormState>(USER_FOR
   },
 });
 
-export function minAge(minAge: number) {
-  return (value: number) => {
-    return value >= minAge ? null : { minAge: true };
-  };
-}
-
 export const createManyUsers = (): User[] => {
   const repeat = (n: number) => [...Array(n).keys()];
 

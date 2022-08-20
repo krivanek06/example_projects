@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User create form</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form *ngIf="userForm$ | async as userForm" [ngrxFormState]="userForm" (ngSubmit)="onSubmit()">
+      <!-- name -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>name</mat-label>
+        <input type="text" matInput [ngrxFormControlState]="userForm.controls.name" placeholder="add name" />
+        <mat-hint>Errors appear instantly!</mat-hint>
+      </mat-form-field>
+      <!-- age -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>age</mat-label>
+        <input type="number" matInput [ngrxFormControlState]="userForm.controls.age" placeholder="add age" />
+      </mat-form-field>
+
+      <!-- gender -->
+      <div class="form-block">
+        <mat-label>gender</mat-label>
+        <mat-radio-group [ngrxFormControlState]="userForm.controls.gender">
+          <mat-radio-button *ngFor="let gender of ['male', 'female']" [value]="gender">
+            {{ gender }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <!-- erros -->
+      <ng-container *ngIf="userForm.isInvalid">
+        <mat-divider></mat-divider>
+        <mat-error *ngIf="userForm.controls.name.errors?.['noChris']">Name cannot be <strong>Chris</strong></mat-error>
+        <mat-error *ngIf="userForm.controls.name.isTouched && userForm.controls.name.errors?.['required']">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.age.isTouched && userForm.controls.age.errors?.['minAge']">
+          Your minimal age is low
+        </mat-error>
+      </ng-container>
+
+      <!-- submit -->
+      <button mat-flat-button type="submit" color="primary">creat user</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<!-- config -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User create config</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form *ngIf="userFormConfig$ | async as userFormConfig" [ngrxFormState]="userFormConfig">
+      <!-- min age -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>name</mat-label>
+        <input type="text" matInput [ngrxFormControlState]="userFormConfig.controls.minAge" placeholder="change minimal age" />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

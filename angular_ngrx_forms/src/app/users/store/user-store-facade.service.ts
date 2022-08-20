@@ -2,7 +2,14 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User, UserForm } from '../models/user.model';
 import { AddManyUsers, CreateUser, SelectUser } from './user.actions';
-import { selectUserById, selectUserForm, selectUserState, selectUsersTotal } from './user.reducers';
+import {
+  selectUserById,
+  selectUserForm,
+  selectUserFormConfig,
+  selectUserFormCreate,
+  selectUserState,
+  selectUsersTotal,
+} from './user.reducers';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +17,8 @@ import { selectUserById, selectUserForm, selectUserState, selectUsersTotal } fro
 export class UserStoreFacadeService {
   readonly selectUserState$ = this.store.select(selectUserState);
   readonly selectUserForm$ = this.store.select(selectUserForm);
+  readonly selectUserFormCreate$ = this.store.select(selectUserFormCreate);
+  readonly selectUserFormConfig$ = this.store.select(selectUserFormConfig);
   readonly selectUsersTotal$ = this.store.select(selectUsersTotal);
   readonly selectUserById$ = (userId: number) => this.store.select(selectUserById(userId));
 

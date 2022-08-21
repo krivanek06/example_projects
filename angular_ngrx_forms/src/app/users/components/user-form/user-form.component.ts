@@ -21,5 +21,8 @@ export class UserFormComponent implements OnInit {
     this.userFormConfig$ = this.userStoreFacadeService.selectUserFormConfig$;
   }
 
-  onSubmit(): void {}
+  onSubmit(userForm: FormGroupState<UserForm>): void {
+    this.userStoreFacadeService.markFormAsTouched(userForm);
+    this.userStoreFacadeService.createUserAction(userForm);
+  }
 }

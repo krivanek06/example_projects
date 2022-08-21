@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { createManyUsers } from './models/user.model';
+import { Observable } from 'rxjs';
+import { createManyUsers, User } from './models/user.model';
 import { UserStoreFacadeService } from './store/user-store-facade.service';
 
 @Component({
@@ -9,11 +10,15 @@ import { UserStoreFacadeService } from './store/user-store-facade.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersComponent implements OnInit {
+  selectUsersAll$!: Observable<User[]>;
   constructor(private userStoreFacadeService: UserStoreFacadeService) {}
 
   ngOnInit(): void {
-    this.userStoreFacadeService.selectUserState$.subscribe(console.log);
-    this.userStoreFacadeService.selectUserForm$.subscribe(console.log);
-    this.userStoreFacadeService.AddManyUsersAction(createManyUsers());
+    this.selectUsersAll$ = this.userStoreFacadeService.selectUsersAll$;
+    this.userStoreFacadeService.addManyUsersAction(createManyUsers());
+  }
+
+  onUserSelect(user: User): void {
+    this.userStoreFacadeService.selectUserAction(user);
   }
 }

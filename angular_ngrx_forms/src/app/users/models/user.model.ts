@@ -8,9 +8,13 @@ export interface UserForm {
   additionalInfo: Boxed<string[]>;
 }
 
-export interface User extends UserForm {
+export interface User {
   id: number;
+  name: string;
+  age: number;
+  gender: UserGender;
   isSelected?: boolean | null;
+  additionalInfo: string[];
 }
 
 export type UserGender = 'male' | 'female';
@@ -45,7 +49,7 @@ export const createManyUsers = (): User[] => {
   return repeat(10).map((index) => {
     return {
       id: index,
-      additionalInfo: box([]),
+      additionalInfo: [],
       age: Number(faker.random.numeric(2)),
       gender: 'male',
       name: faker.name.fullName(),

@@ -75,7 +75,6 @@ const userReducer = (state: UserStoreState = initialState, action: UserActions):
         state
       );
     }
-
     default:
       return state;
   }
@@ -93,3 +92,4 @@ export const selectUserForm = createSelector(selectUserState, (userState) => use
 export const selectUserFormCreate = createSelector(selectUserForm, (userForm) => userForm.controls.user);
 export const selectUserFormConfig = createSelector(selectUserForm, (userForm) => userForm.controls.config);
 export const selectUsersTotal = createSelector(selectUserState, selectTotal);
+export const selectUsersAll = createSelector(selectUserState, selectAll);

@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { FormGroupState } from 'ngrx-forms';
 import { User, UserForm } from '../models/user.model';
 
 export enum UserActionTypes {
@@ -11,7 +12,7 @@ export enum UserActionTypes {
 }
 export class CreateUser implements Action {
   readonly type = UserActionTypes.CREATE_USER;
-  constructor(public payload: { userForm: UserForm }) {}
+  constructor(public payload: { userForm: FormGroupState<UserForm> }) {}
 }
 
 export class CreateUserSuccess implements Action {

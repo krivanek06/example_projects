@@ -11,6 +11,12 @@
         <mat-hint>Errors appear instantly!</mat-hint>
       </mat-form-field>
 
+      <!-- tel number -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>tel. number</mat-label>
+        <input type="text" matInput [ngrxFormControlState]="userForm.controls.phone" placeholder="add phone" />
+      </mat-form-field>
+
       <!-- age -->
       <mat-form-field class="form-block" appearance="outline">
         <mat-label>age</mat-label>
@@ -59,6 +65,9 @@
         </mat-error>
         <mat-error *ngIf="userForm.controls.age.isTouched && userForm.controls.age.errors?.['minAge']">
           Your minimal age is low
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.phone.isTouched && userForm.controls.phone.errors?.['$validPhone']">
+          Invalid phone format
         </mat-error>
       </ng-container>
 

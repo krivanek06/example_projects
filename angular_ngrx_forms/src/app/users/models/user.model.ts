@@ -5,6 +5,7 @@ export interface UserForm {
   name: string;
   age: number;
   gender: UserGender;
+  phone: string;
   additionalInfo: Boxed<string[]>;
 }
 
@@ -36,6 +37,7 @@ export const initialUserFormState = createFormGroupState<UserFormState>(USER_FOR
     name: '',
     gender: 'male',
     age: 0,
+    phone: '',
     additionalInfo: box([]),
   },
   config: {

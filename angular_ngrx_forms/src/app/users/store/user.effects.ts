@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { map } from 'rxjs';
+import { ClearAsyncErrorAction, SetAsyncErrorAction, SetValueAction, StartAsyncValidationAction } from 'ngrx-forms';
+import { filter, from, map, startWith, switchMap, tap } from 'rxjs';
 import { User, UserGender } from '../models/user.model';
+import { isValidUSNumber } from '../models/user.validation';
 import { UserStoreFacadeService } from './user-store-facade.service';
 import {
   AddManyUsers,
@@ -16,9 +18,9 @@ import {
 export class UserEffects {
   readonly createUser$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserActionTypes.CREATE_USER),
+      ofType<CreateUser>(UserActionTypes.CREATE_USER),
       concatLatestFrom(() => [this.userStoreFacadeService.selectUsersTotal$]),
-      map(([createUserAction, totalUser]: [CreateUser, number]) => {
+      map(([createUserAction, totalUser]) => {
         const createUserForm = createUserAction.payload.userForm;
         if (createUserForm.isInvalid) {
           return new CreateUserFailure({ error: 'Form is invalid' });
@@ -33,6 +35,25 @@ export class UserEffects {
           isSelected: false,
         };
         return new CreateUserSuccess({ user });
+      })
+    )
+  );
+
+  readonly validatePhoneNumber$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SetValueAction.TYPE),
+      tap(console.log),
+      filter((formControlUpdate: SetValueAction<string>) => formControlUpdate.controlId === 'user_form_id.user.phone'),
+      switchMap((formControlUpdate) => {
+        const errorKey = 'validPhone';
+        return from(isValidUSNumber(formControlUpdate.value)).pipe(
+          map((validPhone) => {
+            return validPhone
+              ? new ClearAsyncErrorAction(formControlUpdate.controlId, errorKey)
+              : new SetAsyncErrorAction(formControlUpdate.controlId, errorKey, true);
+          }),
+          startWith(new StartAsyncValidationAction(formControlUpdate.controlId, errorKey))
+        );
       })
     )
   );

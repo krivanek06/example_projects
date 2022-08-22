@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { box, Boxed, createFormGroupState } from 'ngrx-forms';
+import { box, Boxed, createFormArrayState, createFormGroupState, FormArrayState } from 'ngrx-forms';
 
 export interface UserForm {
   name: string;
@@ -7,6 +7,11 @@ export interface UserForm {
   gender: UserGender;
   phone: string;
   additionalInfo: Boxed<string[]>;
+}
+
+export interface UserFormFriend {
+  fistname: string;
+  lastname: string;
 }
 
 export interface User {
@@ -26,11 +31,13 @@ export interface UserFormConfig {
 
 export interface UserFormState {
   user: UserForm;
+  userFriends: FormArrayState<UserFormFriend>;
   config: UserFormConfig;
 }
 
 export const USER_FEATURE_KEY = 'user_feature';
 export const USER_FORM_ID = 'user_form_id';
+export const USER_FORM_FRIEND_ID = 'user_form_friend_id';
 
 export const initialUserFormState = createFormGroupState<UserFormState>(USER_FORM_ID, {
   user: {
@@ -40,6 +47,7 @@ export const initialUserFormState = createFormGroupState<UserFormState>(USER_FOR
     phone: '',
     additionalInfo: box([]),
   },
+  userFriends: createFormArrayState<UserFormFriend>(USER_FORM_FRIEND_ID, []),
   config: {
     minAge: 18,
   },

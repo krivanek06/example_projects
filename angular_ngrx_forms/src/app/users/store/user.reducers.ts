@@ -20,15 +20,24 @@ const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({
 export const userFormGroupReducer = createFormStateReducerWithUpdate<UserFormState>(
   updateGroup<UserFormState>(
     {
-      user: updateGroup<UserForm>({
-        name: validate([required, minLength(4), noChris]),
-        age: validate(required),
-        gender: validate(required),
-        additionalInfo: validate([minLength(4)]),
-      }),
+      user: updateGroup<UserForm>(
+        {
+          name: validate([required, minLength(4), noChris]),
+          age: validate(required),
+          gender: validate(required),
+          additionalInfo: validate([]),
+        },
+        {}
+      ),
       config: updateGroup<UserFormConfig>({
         minAge: validate([required, greaterThanOrEqualTo(0)]),
       }),
+      // userFriends: updateArray(
+      //   updateGroup<UserFormFriend>({
+      //     fistname: validate(required),
+      //     lastname: validate(required),
+      //   })
+      // ),
     },
     {
       // validate user's age more than config.age
@@ -75,6 +84,20 @@ const userReducer = (state: UserStoreState = initialState, action: UserActions):
         state
       );
     }
+    // case UserActionTypes.ADD_USER_FRIEND_CONTROL: {
+    //   return {...state, userForm: {
+    //     ...state.userForm,
+    //     controls: {
+    //       ...state.userForm.controls,
+    //       userFriends: updateGroup<UserFormFriend>({
+    //         group: group => {
+
+    //           return group;
+    //         }
+    //       })
+    //     }
+    //   }}
+    // }
     default:
       return state;
   }
@@ -90,6 +113,7 @@ export const { selectIds, selectEntities, selectAll, selectTotal } = userAdapter
 export const selectUserById = (userId: number) => createSelector(selectUserState, (userState) => userState.entities[userId]);
 export const selectUserForm = createSelector(selectUserState, (userState) => userState.userForm);
 export const selectUserFormCreate = createSelector(selectUserForm, (userForm) => userForm.controls.user);
+export const selectUserFormFriends = createSelector(selectUserForm, (userForm) => userForm.controls.userFriends);
 export const selectUserFormConfig = createSelector(selectUserForm, (userForm) => userForm.controls.config);
 export const selectUsersTotal = createSelector(selectUserState, selectTotal);
 export const selectUsersAll = createSelector(selectUserState, selectAll);

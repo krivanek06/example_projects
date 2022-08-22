@@ -9,6 +9,8 @@ export enum UserActionTypes {
   SELECT_USER = '[User] select user',
   ADD_MANY_USERS = '[User] add many users',
   ADD_MANY_USERS_SUCCESS = '[User] add many user success',
+  ADD_USER_FRIEND_CONTROL = '[User] add friend control',
+  REMOVE_USER_FRIEND_CONTROL = '[User] remove friend control',
 }
 export class CreateUser implements Action {
   readonly type = UserActionTypes.CREATE_USER;
@@ -40,4 +42,20 @@ export class SelectUser implements Action {
   constructor(public payload: { userId: number }) {}
 }
 
-export type UserActions = CreateUser | CreateUserSuccess | AddManyUsersSuccess | AddManyUsers | SelectUser;
+export class AddUserFriendControl implements Action {
+  readonly type = UserActionTypes.ADD_USER_FRIEND_CONTROL;
+}
+
+export class RemoveUserFriendControl implements Action {
+  readonly type = UserActionTypes.REMOVE_USER_FRIEND_CONTROL;
+  constructor(public payload: { index: number }) {}
+}
+
+export type UserActions =
+  | AddUserFriendControl
+  | RemoveUserFriendControl
+  | CreateUser
+  | CreateUserSuccess
+  | AddManyUsersSuccess
+  | AddManyUsers
+  | SelectUser;

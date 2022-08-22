@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { ClearAsyncErrorAction, SetAsyncErrorAction, SetValueAction, StartAsyncValidationAction } from 'ngrx-forms';
-import { filter, from, map, startWith, switchMap, tap } from 'rxjs';
+import { filter, from, map, startWith, switchMap } from 'rxjs';
 import { User, UserGender } from '../models/user.model';
 import { isValidUSNumber } from '../models/user.validation';
 import { UserStoreFacadeService } from './user-store-facade.service';
@@ -42,7 +42,6 @@ export class UserEffects {
   readonly validatePhoneNumber$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SetValueAction.TYPE),
-      tap(console.log),
       filter((formControlUpdate: SetValueAction<string>) => formControlUpdate.controlId === 'user_form_id.user.phone'),
       switchMap((formControlUpdate) => {
         const errorKey = 'validPhone';
@@ -64,6 +63,19 @@ export class UserEffects {
       map((action: AddManyUsers) => new AddManyUsersSuccess({ users: action.payload.users }))
     )
   );
+
+  // readonly addUserFriendControl$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(UserActionTypes.REMOVE_USER_FRIEND_CONTROL),
+  //     map(
+  //       () =>
+  //         new AddArrayControlAction<UserFormFriend>(USER_FORM_FRIEND_ID, {
+  //           fistname: 'placeholder',
+  //           lastname: '',
+  //         })
+  //     )
+  //   )
+  // );
 
   constructor(private actions$: Actions, private userStoreFacadeService: UserStoreFacadeService) {}
 }

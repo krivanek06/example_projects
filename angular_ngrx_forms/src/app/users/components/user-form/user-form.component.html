@@ -1,0 +1,110 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User create form</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form *ngIf="userForm$ | async as userForm" [ngrxFormState]="userForm" (ngSubmit)="onSubmit(userForm)">
+      <!-- name -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>name</mat-label>
+        <input type="text" matInput [ngrxFormControlState]="userForm.controls.name" placeholder="add name" />
+        <mat-hint>Errors appear instantly!</mat-hint>
+      </mat-form-field>
+
+      <!-- tel number -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>tel. number</mat-label>
+        <input type="text" matInput [ngrxFormControlState]="userForm.controls.phone" placeholder="add phone" />
+      </mat-form-field>
+
+      <!-- age -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>age</mat-label>
+        <input type="number" matInput [ngrxFormControlState]="userForm.controls.age" placeholder="add age" />
+      </mat-form-field>
+
+      <!-- additional info -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>additional info</mat-label>
+        <select matNativeControl [multiple]="true" [ngrxFormControlState]="userForm.controls.additionalInfo">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </mat-form-field>
+
+      <!-- gender -->
+      <div class="form-block">
+        <mat-label>gender</mat-label>
+        <mat-radio-group [ngrxFormControlState]="userForm.controls.gender">
+          <mat-radio-button *ngFor="let gender of ['male', 'female']" [value]="gender">
+            {{ gender }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <!-- erros -->
+      <ng-container *ngIf="userForm.isInvalid">
+        <mat-divider></mat-divider>
+        <mat-error *ngIf="userForm.controls.name.errors?.['noChris']">Name cannot be <strong>Chris</strong></mat-error>
+        <mat-error *ngIf="userForm.controls.name.isTouched && userForm.controls.name.errors?.['required']">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.age.isTouched && userForm.controls.age.errors?.['minAge']">
+          Your minimal age is low
+        </mat-error>
+        <mat-error *ngIf="userForm.controls.phone.isTouched && userForm.controls.phone.errors?.['$validPhone']">
+          Invalid phone format
+        </mat-error>
+      </ng-container>
+
+      <!-- submit -->
+      <button mat-flat-button type="submit" color="primary" [disabled]="!userForm.isTouched">creat user</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<!-- config to adjust above form -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User create config</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form *ngIf="userFormConfig$ | async as userFormConfig" [ngrxFormState]="userFormConfig">
+      <!-- min age -->
+      <mat-form-field class="form-block" appearance="outline">
+        <mat-label>min age</mat-label>
+        <input type="text" matInput [ngrxFormControlState]="userFormConfig.controls.minAge" placeholder="change minimal age" />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<!-- friend === dynamic controller -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create friend</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form *ngIf="userFormFriends$ | async as userFormFriends" [ngrxFormState]="userFormFriends">
+      <ng-container *ngFor="let group of userFormFriends.controls.controls.controls; let i = index">
+        <!-- firstname -->
+        <mat-form-field class="form-block" appearance="outline">
+          <mat-label>firstname</mat-label>
+          <input type="text" matInput [ngrxFormControlState]="$any(group.controls).fistname" placeholder="firstname" />
+        </mat-form-field>
+
+        <!-- lastname -->
+        <mat-form-field class="form-block" appearance="outline">
+          <mat-label>lastname</mat-label>
+          <input type="text" matInput [ngrxFormControlState]="$any(group.controls).lastname" placeholder="lastname" />
+        </mat-form-field>
+      </ng-container>
+
+      <button mat-flat-button color="primary" type="button" (click)="onAddFriendControl(userFormFriends.controls.controls.id)">
+        Add friend
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

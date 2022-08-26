@@ -1,0 +1,6 @@
+<div class="left">
+  <app-user-form></app-user-form>
+</div>
+<div class="right">
+  <app-user-info *ngFor="let user of selectUsersAll$ | async" (selectUser)="onUserSelect(user)" [user]="user"></app-user-info>
+</div>

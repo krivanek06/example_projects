@@ -1,0 +1,22 @@
+:host {
+	.wrapper {
+		padding: 16px;
+		width: 90%;
+		margin: auto;
+	}
+
+	mat-card {
+		mat-card-content {
+			mat-progress-bar {
+				margin-bottom: 16px;
+			}
+		}
+		mat-card-actions {
+			display: flex;
+			gap: 16px;
+			button {
+				width: 100%;
+			}
+		}
+	}
+}

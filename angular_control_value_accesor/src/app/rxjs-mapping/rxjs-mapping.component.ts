@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import {
@@ -18,7 +18,7 @@ import { withLatestFrom } from 'rxjs/operators';
 export class RxjsMappingComponent implements OnInit {
 	form!: FormGroup;
 
-	private url = 'https://flash.siwalik.in/delay/3000/url/api.github.com';
+	private url = 'https://flash-the-slow-api.herokuapp.com/delay/4000';
 	constructor(private fb: FormBuilder, private http: HttpClient) {}
 
 	get switchMapField(): AbstractControl {
@@ -50,7 +50,18 @@ export class RxjsMappingComponent implements OnInit {
 	}
 
 	private makeRequest(): Observable<any> {
-		return this.http.get(this.url);
+		const httpOptions = {
+			headers: new HttpHeaders(),
+		};
+
+		httpOptions.headers.append('Access-Control-Allow-Origin', '*');
+		httpOptions.headers.append('Content-Type', 'application/json');
+		httpOptions.headers.append(
+			'Content-Type',
+			'application/x-www-form-urlencoded; charset=UTF-8'
+		);
+
+		return this.http.get(this.url, httpOptions);
 	}
 
 	/*

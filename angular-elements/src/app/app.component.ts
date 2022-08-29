@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, DoBootstrap } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { createApplication } from '@angular/platform-browser';
@@ -5,10 +6,10 @@ import { VotingNewComponent } from './voting-new/voting-new.component';
 
 @Component({
 	selector: 'app-root',
-	template: ``,
+	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 	standalone: true,
-	imports: [VotingNewComponent],
+	imports: [CommonModule, VotingNewComponent],
 })
 export class AppComponent implements DoBootstrap {
 	// PR: https://github.com/angular/angular/pull/46475

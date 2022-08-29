@@ -21,6 +21,15 @@ export class VotingNewComponent implements OnInit {
 
 	constructor(private el: ElementRef) {}
 
+	// async ngDoBootstrap(appRef: ApplicationRef): Promise<void> {
+	// 	// get a hand on the `ApplicationRef` to access its injector
+	// 	const applicationRef = await createApplication();
+	// 	// create a constructor of a custom element
+	// 	const votingNew = createCustomElement(VotingNewComponent, { injector: applicationRef.injector });
+	// 	// register in a browser
+	// 	customElements.define('voting-new', votingNew);
+	// }
+
 	ngOnInit(): void {}
 
 	// make public methods

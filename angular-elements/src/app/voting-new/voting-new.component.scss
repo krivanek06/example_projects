@@ -1,3 +1,7 @@
+// issue with missing material css on build
+// link: https://stackoverflow.com/questions/57960983/angular-elements-doesnt-include-material-theme-css-properly
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 :host {
 	.wrapper {
 		padding: 16px;

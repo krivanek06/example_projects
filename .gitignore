@@ -17,3 +17,5 @@ dist/
 .history/*
 
 .DS_Store
+
+yarn.lock

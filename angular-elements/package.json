@@ -7,7 +7,7 @@
 		"build": "ng build --output-hashing=none",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
-		"package": "cat ./dist/angular-elements/runtime.js ./dist/angular-elements/polyfills.js  ./dist/angular-elements/main.js > public/custom-voting-element.js"
+		"package": "cat ./dist/angular-elements/runtime*.js ./dist/angular-elements/polyfills*.js  ./dist/angular-elements/main*.js > public/custom-voting-element.js"
 	},
 	"private": true,
 	"dependencies": {

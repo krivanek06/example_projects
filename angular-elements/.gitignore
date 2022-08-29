@@ -45,5 +45,5 @@ Thumbs.db
 dist/
 custom-voting-element.js
 elements/
-public/custom-voting-element.js
+./public/custom-voting-element.js
 

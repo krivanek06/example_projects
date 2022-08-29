@@ -9,5 +9,6 @@ import { VotingOldComponent } from './voting-old.component';
 	declarations: [VotingOldComponent],
 	imports: [CommonModule, MatButtonModule, MatCardModule, MatProgressBarModule],
 	exports: [VotingOldComponent],
+	bootstrap: [VotingOldComponent], // can be removed, works without bootstrap
 })
 export class VotingOldModule {}

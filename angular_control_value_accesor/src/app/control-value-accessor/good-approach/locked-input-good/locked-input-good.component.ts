@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /*
   NG_VALUE_ACCESSOR is required to attach formControlName for this component.
@@ -20,7 +20,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 		},
 	],
 })
-export class LockedInputGoodComponent implements OnInit {
+export class LockedInputGoodComponent implements ControlValueAccessor, OnInit {
 	value = false;
 	disabled = false;
 	onChange!: (value: boolean) => void;

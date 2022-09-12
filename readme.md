@@ -1,6 +1,3 @@
-make example about
+# Overview
 
-- injection token for services
-- animations in angular
-- angular v14 changes
-- typescript decorators
+Repo dedicated for small examples in Angular & TS, to practise different problem solving techniques.

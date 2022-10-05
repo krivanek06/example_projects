@@ -1,0 +1,75 @@
+<h1>Examples with <a href="https://www.npmjs.com/package/ng2-charts">Ng2 charts</a></h1>
+
+<div class="chart-grid">
+	<!-- line chart -->
+	<div class="chart-wrapper">
+		<canvas
+			baseChart
+			[type]="'line'"
+			[data]="lineChart.lineChartData"
+			[options]="lineChart.lineChartOptions"
+			[legend]="lineChart.lineChartLegend"
+		>
+		</canvas>
+	</div>
+
+	<!-- bar chart -->
+	<div class="chart-wrapper">
+		<canvas
+			baseChart
+			[type]="'bar'"
+			[data]="barChart.barChartData"
+			[options]="barChart.barChartOptions"
+			[legend]="barChart.barChartLegend"
+		>
+		</canvas>
+	</div>
+
+	<!-- pie chart -->
+	<div class="chart-wrapper">
+		<canvas
+			baseChart
+			[type]="'pie'"
+			[data]="pieChart.pieChartData"
+			[options]="pieChart.pieChartOptions"
+			[legend]="pieChart.pieChartLegend"
+		>
+		</canvas>
+	</div>
+
+	<!-- pie chart -->
+	<div class="chart-wrapper">
+		<canvas
+			baseChart
+			[type]="'pie'"
+			[data]="pieChart.pieChartData2"
+			[options]="pieChart.pieChartOptions"
+			[legend]="pieChart.pieChartLegend"
+		>
+		</canvas>
+	</div>
+
+	<!-- doughnut chart -->
+	<div class="chart-wrapper">
+		<canvas
+			baseChart
+			[type]="'doughnut'"
+			[data]="doughnutChart.doughnutChartData"
+			[options]="doughnutChart.doughnutChartOptions"
+			[legend]="doughnutChart.doughnutChartLegend"
+		>
+		</canvas>
+	</div>
+
+	<!-- scatter chart -->
+	<div class="chart-wrapper">
+		<canvas
+			baseChart
+			[type]="'scatter'"
+			[data]="scatter.scatterChartData"
+			[options]="scatter.scatterChartOptions"
+			[legend]="scatter.scatterChartLegend"
+		>
+		</canvas>
+	</div>
+</div>

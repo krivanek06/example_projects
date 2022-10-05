@@ -7,6 +7,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { NgChartsModule } from 'ng2-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { AppComponent } from './app.component';
+import { Ng2ChartsModule } from './components/ng2-charts/ng2-charts.module';
 import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -30,6 +31,9 @@ import { MaterialModule } from './material.module';
 		HighchartsChartModule,
 		// https://www.npmjs.com/package/angular-google-charts
 		GoogleChartsModule,
+
+		// custom imports
+		Ng2ChartsModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

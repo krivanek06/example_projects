@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+	margin-left: 24px;
+}
+
+.chart-grid {
+	padding: 16px;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+
+	@media only screen and (max-width: 1280px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@media only screen and (max-width: 968px) {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+}

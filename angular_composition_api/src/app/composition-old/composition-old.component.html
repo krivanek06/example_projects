@@ -1,0 +1,11 @@
+<!-- loading button example -->
+<mat-radio-group [(ngModel)]="isButtonLoadingExample" aria-label="Select an option">
+	<mat-radio-button [value]="true">Loading start</mat-radio-button>
+	<mat-radio-button [value]="false">Loading end</mat-radio-button>
+</mat-radio-group>
+
+<div class="content-wrapper">
+	<button mat-raised-button color="primary" [loading]="isButtonLoadingExample">Click me!</button>
+	<button mat-raised-button color="accent" [loading]="isButtonLoadingExample">Click me!</button>
+	<button mat-raised-button color="warn" [loading]="isButtonLoadingExample">Click me!</button>
+</div>

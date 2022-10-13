@@ -1,0 +1,9 @@
+.content-wrapper {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+button {
+  min-width: 250px;
+}

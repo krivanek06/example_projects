@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import { CompositionOldModule } from './composition-old/composition-old.module';
 import { MaterialModule } from './material.module';
 import { SharedModule } from './shared.module';
 
@@ -12,6 +13,7 @@ import { SharedModule } from './shared.module';
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
+    CompositionOldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

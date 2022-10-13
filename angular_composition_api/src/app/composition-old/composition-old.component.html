@@ -1,4 +1,5 @@
 <!-- loading button example -->
+<h1>Example with loading spinner</h1>
 <mat-radio-group [(ngModel)]="isButtonLoadingExample" aria-label="Select an option">
 	<mat-radio-button [value]="true">Loading start</mat-radio-button>
 	<mat-radio-button [value]="false">Loading end</mat-radio-button>
@@ -16,4 +17,26 @@
 	<app-example-button-loading color="primary" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
 	<app-example-button-loading color="accent" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
 	<app-example-button-loading color="warn" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
+</div>
+
+<!-- content divider -->
+<div class="c-mat-divider">
+	<mat-divider></mat-divider>
+</div>
+
+<h1>Example with console logging user action</h1>
+
+<!-- button click log example -->
+<h3>Example with globally applied directive</h3>
+<div class="content-wrapper">
+	<button mat-raised-button color="primary" logginText="Primary button">Click me!</button>
+	<button mat-raised-button color="accent" logginText="Accent button">Click me!</button>
+	<button mat-raised-button color="warn" logginText="Warn button">Click me!</button>
+</div>
+
+<h3>Example with custom components</h3>
+<div class="content-wrapper">
+	<app-example-button-click color="primary" logginText="Primary button">Click me!</app-example-button-click>
+	<app-example-button-click color="accent" logginText="Accent button">Click me!</app-example-button-click>
+	<app-example-button-click color="warn" logginText="Warn button">Click me!</app-example-button-click>
 </div>

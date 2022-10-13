@@ -11,6 +11,10 @@ body {
 	background-color: #cccccc;
 }
 
+button {
+	min-width: 250px !important;
+}
+
 /* styles for loading mat spinner */
 .button-loading {
 	.mat-button-wrapper {

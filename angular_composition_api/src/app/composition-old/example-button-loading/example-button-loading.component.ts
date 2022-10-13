@@ -9,7 +9,7 @@ import { ThemePalette } from '@angular/material/core';
 			<ng-content></ng-content>
 		</button>
 	`,
-	styles: ['button { min-width: 250px;}', 'mat-spinner {position: absolute; right: -25px}'],
+	styles: ['mat-spinner {position: absolute; right: -25px}'],
 })
 export class ExampleButtonLoadingComponent {
 	@Input() loading!: boolean;

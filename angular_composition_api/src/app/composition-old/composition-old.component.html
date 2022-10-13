@@ -4,8 +4,16 @@
 	<mat-radio-button [value]="false">Loading end</mat-radio-button>
 </mat-radio-group>
 
+<h3>Example with globally applied directive</h3>
 <div class="content-wrapper">
 	<button mat-raised-button color="primary" [loading]="isButtonLoadingExample">Click me!</button>
 	<button mat-raised-button color="accent" [loading]="isButtonLoadingExample">Click me!</button>
 	<button mat-raised-button color="warn" [loading]="isButtonLoadingExample">Click me!</button>
+</div>
+
+<h3>Example with custom components</h3>
+<div class="content-wrapper">
+	<app-example-button-loading color="primary" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
+	<app-example-button-loading color="accent" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
+	<app-example-button-loading color="warn" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
 </div>

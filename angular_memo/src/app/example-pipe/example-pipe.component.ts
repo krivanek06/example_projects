@@ -16,7 +16,6 @@ export class ExamplePipeComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(scan((acc, curr) => [...acc, curr], [] as AnimeData[]));
-		this.loadedAnime$.subscribe(console.log);
 	}
 
 	sortBy(key: 'name' | 'score' | 'custom'): void {

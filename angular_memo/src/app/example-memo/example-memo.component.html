@@ -1,1 +1,35 @@
-<p>example-memo works!</p>
+<h2>MEMO component</h2>
+
+<div class="component-wrapper">
+	<div>Dummy text</div>
+	<button mat-flat-button color="primary" (click)="onClick()">Just for fun</button>
+</div>
+
+<!-- search anime -->
+<div>
+	<app-search-anime [formControl]="animeSearchControl"></app-search-anime>
+</div>
+
+<!-- table header -->
+<div class="anime-wrapper-header">
+	<div>
+		Title <button mat-icon-button (click)="sortBy('name')"><mat-icon>sort_by_alpha</mat-icon></button>
+	</div>
+	<div>Source</div>
+	<div>Duration</div>
+	<div>
+		Score <button mat-icon-button (click)="sortBy('score')"><mat-icon>sort_by_alpha</mat-icon></button>
+	</div>
+	<div>
+		Custom <button mat-icon-button (click)="sortBy('custom')"><mat-icon>sort_by_alpha</mat-icon></button>
+	</div>
+</div>
+
+<!-- table body -->
+<div *ngFor="let data of loadedAnime$ | async" class="anime-wrapper">
+	<div>{{ data.title_english ?? data.title }}</div>
+	<div>{{ data.source }}</div>
+	<div>{{ data.duration }}</div>
+	<div>{{ data.score }}</div>
+	<div>{{ hardMathEquasion(data) | async }}</div>
+</div>

@@ -1,7 +1,7 @@
 <h2>Pipe call component</h2>
 
 <div class="component-wrapper">
-	<div>Function call execution: 0</div>
+	<div>Dummy text</div>
 	<button mat-flat-button color="primary" (click)="onClick()">Just for fun</button>
 </div>
 
@@ -31,5 +31,6 @@
 	<div>{{ data.source }}</div>
 	<div>{{ data.duration }}</div>
 	<div>{{ data.score }}</div>
-	<div>{{ (data.title| hardMathEquasion: data.score) | async }}</div>
+	<!-- <div>{{ (data| hardMathEquasion) | async }}</div> -->
+	<div>{{ (data| hardMathEquasionMemo) | async }}</div>
 </div>

@@ -28,7 +28,7 @@ export class ExampleFunctionCallAsyncComponent implements OnInit {
 	hardMathEquasion(anime: AnimeData): Observable<number> {
 		console.log(`[Async] Function call ${anime.title}`);
 		this.functionCallExecution += 1;
-		return this.apiService.hardMathEquasionAsync(anime.score);
+		return this.apiService.hardMathEquasionAsync(anime);
 	}
 
 	onClick(): void {}

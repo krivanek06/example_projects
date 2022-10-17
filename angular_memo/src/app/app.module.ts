@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ExampleFunctionCallAsyncComponent } from './example-function-call-async/example-function-call-async.component';
 import { ExampleFunctionCallComponent } from './example-function-call/example-function-call.component';
+import { HardMathEquasionMemoPipe } from './example-pipe/hard-math-equasion-memo.pipe';
 import { HardMathEquasionPipe } from './example-pipe/hard-math-equasion.pipe';
 import { MaterialModule } from './material.module';
 import { SearchAnimeComponent } from './search-anime/search-anime.component';
@@ -23,6 +24,7 @@ import { SearchAnimeComponent } from './search-anime/search-anime.component';
 		ExamplePipeComponent,
 		SearchAnimeComponent,
 		HardMathEquasionPipe,
+		HardMathEquasionMemoPipe,
 	],
 	imports: [
 		BrowserModule,

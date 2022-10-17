@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -12,7 +13,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 @NgModule({
 	imports: [
 		MatListModule,
@@ -28,6 +28,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 		MatBadgeModule,
 		MatProgressSpinnerModule,
 		MatRadioModule,
+		MatAutocompleteModule,
 	],
 	exports: [
 		MatListModule,
@@ -43,6 +44,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 		MatBadgeModule,
 		MatProgressSpinnerModule,
 		MatRadioModule,
+		MatAutocompleteModule,
 	],
 })
 export class MaterialModule {}

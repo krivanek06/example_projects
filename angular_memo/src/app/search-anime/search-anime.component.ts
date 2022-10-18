@@ -41,9 +41,12 @@ export class SearchAnimeComponent implements OnInit, ControlValueAccessor {
 	/**
 	 * notify parent component that a value has been selected
 	 */
-	onSelectionChange(animeData: AnimeData): void {
-		this.onChange(animeData);
-		this.searchControl.patchValue('', { emitEvent: false });
+	onSelectionChange(animeData: AnimeData, event: any): void {
+		// ignore on deselection of the previous option
+		if (event.isUserInput) {
+			this.onChange(animeData);
+			this.searchControl.patchValue('', { emitEvent: false });
+		}
 	}
 
 	// unsed

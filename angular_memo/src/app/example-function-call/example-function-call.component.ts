@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, scan } from 'rxjs';
+import { Observable, scan, tap } from 'rxjs';
 import { AnimeData, hardMathEquasion } from '../data.model';
 
 @Component({
@@ -16,8 +16,10 @@ export class ExampleFunctionCallComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {
-		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(scan((acc, curr) => [...acc, curr], [] as AnimeData[]));
-		this.loadedAnime$.subscribe(console.log);
+		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(
+			tap(console.log),
+			scan((acc, curr) => [...acc, curr], [] as AnimeData[])
+		);
 	}
 
 	sortBy(key: 'name' | 'score' | 'custom'): void {

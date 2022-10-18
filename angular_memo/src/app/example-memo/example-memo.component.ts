@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable, scan } from 'rxjs';
 import { ApiService } from '../api.service';
 import { AnimeData } from '../data.model';
-import { memo } from './memo';
+import { customMemo, customMemoize } from './memo';
 
 @Component({
 	selector: 'app-example-memo',
@@ -15,7 +15,7 @@ export class ExampleMemoComponent implements OnInit {
 	loadedAnime$!: Observable<AnimeData[]>;
 	constructor(private apiService: ApiService) {}
 
-	hardMathEquasion = memo((animeData: AnimeData) => this.apiService.hardMathEquasionAsync(animeData));
+	hardMathEquasion = customMemo((animeData: AnimeData) => this.apiService.hardMathEquasionAsync(animeData));
 
 	ngOnInit(): void {
 		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(scan((acc, curr) => [...acc, curr], [] as AnimeData[]));
@@ -26,4 +26,9 @@ export class ExampleMemoComponent implements OnInit {
 	}
 
 	onClick(): void {}
+
+	@customMemoize()
+	hardMathEquasionCustomMemo(animeData: AnimeData): Observable<number> {
+		return this.apiService.hardMathEquasionAsync(animeData);
+	}
 }

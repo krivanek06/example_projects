@@ -28,5 +28,28 @@ export class ExampleFunctionCallComponent implements OnInit {
 		return hardMathEquasion(anime.score);
 	}
 
-	onClick(): void {}
+	onClick(): void {
+		// const zero = this.peformance(100);
+		// console.log(`Performance test: 100 took ${zero} milliseconds`);
+		// const first = this.peformance(1000);
+		// console.log(`Performance test: 1 000 took ${first} milliseconds`);
+		// const second = this.peformance(10000);
+		// console.log(`Performance test: 10 000 took ${second} milliseconds`);
+		// const third = this.peformance(100000);
+		// console.log(`Performance test: 100 000 took ${third} milliseconds`);
+		// const fourth = this.peformance(500000);
+		// console.log(`Performance test: 500 000 took ${fourth} milliseconds`);
+	}
+
+	private peformance(time: number): number {
+		const startTime = performance.now();
+		for (let i = 0; i < time; i++) {
+			// perform evaluation
+			const evaluation = hardMathEquasion(i);
+		}
+		const endTime = performance.now();
+
+		const result = Math.round(endTime - startTime);
+		return result;
+	}
 }

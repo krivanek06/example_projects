@@ -11,7 +11,6 @@ import { AnimeData } from '../data.model';
 	name: 'hardMathEquasionMemo',
 })
 export class HardMathEquasionMemoPipe implements PipeTransform {
-	// {AnimeData.title: hardMathEquasionAsync()}
 	private static cachedAnimeDataCalculations: { [id: string]: number } = {};
 
 	constructor(private apiService: ApiService) {}

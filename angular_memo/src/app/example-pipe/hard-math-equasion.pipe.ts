@@ -9,6 +9,8 @@ import { AnimeData } from '../data.model';
 export class HardMathEquasionPipe implements PipeTransform {
 	constructor(private apiService: ApiService) {}
 
+	// using @customMemoize() dont do anything
+	// @customMemoize()
 	transform(anime: AnimeData): Observable<number> {
 		console.log(`Pipe running for ${anime.title}`);
 		return this.apiService.hardMathEquasionAsync(anime);

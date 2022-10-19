@@ -22,10 +22,6 @@ export class ExampleFunctionCallComponent implements OnInit {
 		);
 	}
 
-	sortBy(key: 'name' | 'score' | 'custom'): void {
-		// maybe once it will be sorting
-	}
-
 	hardMathEquasion(anime: AnimeData): number {
 		console.log(`Function call ${anime.title}`);
 		this.functionCallExecution += 1;

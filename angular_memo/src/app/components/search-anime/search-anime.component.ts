@@ -1,13 +1,14 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, Observable, switchMap } from 'rxjs';
-import { ApiService } from '../api.service';
-import { AnimeData } from '../data.model';
+import { ApiService } from '../../api.service';
+import { AnimeData } from '../../data.model';
 
 @Component({
 	selector: 'app-search-anime',
 	templateUrl: './search-anime.component.html',
 	styleUrls: ['./search-anime.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,

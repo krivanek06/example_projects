@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { delay, of } from 'rxjs';
 import { ButtonDirective, ButtonPrimaryDirective, ButtonSuccessDirective } from './examples/button.directive';
+import { CompositionMatButtonComponent } from './examples/composition-mat-button.component';
 import { ActiveDirective, ActiveService, ToggleActiveDirective } from './examples/ifActive.directive';
 
 @Component({
@@ -15,6 +16,7 @@ import { ActiveDirective, ActiveService, ToggleActiveDirective } from './example
 		MatButtonModule,
 		ToggleActiveDirective,
 		ActiveDirective,
+		CompositionMatButtonComponent,
 	],
 	standalone: true,
 	providers: [ActiveService],

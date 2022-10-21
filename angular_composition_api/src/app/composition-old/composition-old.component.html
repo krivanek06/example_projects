@@ -5,18 +5,9 @@
 	<mat-radio-button [value]="false">Loading end</mat-radio-button>
 </mat-radio-group>
 
-<h3>Example with globally applied directive</h3>
 <div class="content-wrapper">
-	<button mat-raised-button color="primary" [loading]="isButtonLoadingExample">Click me!</button>
-	<button mat-raised-button color="accent" [loading]="isButtonLoadingExample">Click me!</button>
-	<button mat-raised-button color="warn" [loading]="isButtonLoadingExample">Click me!</button>
-</div>
-
-<h3>Example with custom components</h3>
-<div class="content-wrapper">
-	<app-example-button-loading color="primary" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
-	<app-example-button-loading color="accent" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
-	<app-example-button-loading color="warn" [loading]="isButtonLoadingExample">Click me!</app-example-button-loading>
+	<button mat-raised-button color="primary" [loading]="isButtonLoadingExample">Globally applied directive</button>
+	<app-button-loading color="warn" [loading]="isButtonLoadingExample">Custom components</app-button-loading>
 </div>
 
 <!-- content divider -->
@@ -27,16 +18,7 @@
 <h1>Example with console logging user action</h1>
 
 <!-- button click log example -->
-<h3>Example with globally applied directive</h3>
 <div class="content-wrapper">
-	<button mat-raised-button color="primary" logginText="Primary button">Click me!</button>
-	<button mat-raised-button color="accent" logginText="Accent button">Click me!</button>
-	<button mat-raised-button color="warn" logginText="Warn button">Click me!</button>
-</div>
-
-<h3>Example with custom components</h3>
-<div class="content-wrapper">
-	<app-example-button-click color="primary" logginText="Primary button">Click me!</app-example-button-click>
-	<app-example-button-click color="accent" logginText="Accent button">Click me!</app-example-button-click>
-	<app-example-button-click color="warn" logginText="Warn button">Click me!</app-example-button-click>
+	<button mat-raised-button color="primary" logginText="Primary button">Globally applied directive</button>
+	<app-example-button-click color="warn" logginText="Warn button">Custom components</app-example-button-click>
 </div>

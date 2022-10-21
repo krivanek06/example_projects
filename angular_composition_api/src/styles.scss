@@ -31,10 +31,15 @@ button {
 .content-wrapper {
 	margin-top: 24px;
 	display: flex;
-	flex-flow: wrap;
+	flex-flow: row;
+	gap: 24px;
 	justify-content: space-between;
 }
 
 [data-button-type='success'] {
-	background-color: red;
+	color: green;
+}
+
+mat-form-field {
+	width: 100%;
 }

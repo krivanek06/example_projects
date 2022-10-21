@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	padding: 24px;
+	background-color: #cccccc;
+}
+
+button {
+	min-width: 250px !important;
+}
+
+/* styles for loading mat spinner */
+.button-loading {
+	.mat-button-wrapper {
+		visibility: hidden;
+	}
+
+	.mat-progress-spinner {
+		position: absolute;
+		top: calc(50% - 10px);
+		left: calc(50% - 10px);
+	}
+}
+
+.content-wrapper {
+	margin-top: 24px;
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-between;
+}
+
+[data-button-type='success'] {
+	background-color: red;
+}

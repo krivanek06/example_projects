@@ -1,8 +1,8 @@
 <!-- logging buttons -->
 <div class="content-wrapper">
-	<button mat-flat-button color="primary">Primary button</button>
-	<button mat-flat-button color="accent">Success button</button>
-	<button mat-flat-button color="warn">Error button</button>
+	<button mat-flat-button color="primary">Logging Primary button</button>
+	<button mat-flat-button color="accent">Logging Success button</button>
+	<button mat-flat-button color="warn">NOT logging</button>
 </div>
 
 <!-- ngIfActive test -->
@@ -15,5 +15,19 @@
 
 <!-- example -->
 <div class="content-wrapper">
-	<app-composition-mat-button></app-composition-mat-button>
+	<mat-form-field appearance="outline">
+		<mat-label>Add input</mat-label>
+		<input matInput placeholder="Ex. Pizza" value="Test value" />
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Leave a comment</mat-label>
+		<textarea matInput placeholder="Ex. It makes me feel..." value="Text area example value"></textarea>
+	</mat-form-field>
+</div>
+
+<!-- Custom component extending directive -->
+<h3>Custom input using hostDirectives</h3>
+<div class="content-wrapper">
+	<app-input-composition [formControl]="control"></app-input-composition>
 </div>

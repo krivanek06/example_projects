@@ -1,0 +1,14 @@
+<!-- logging buttons -->
+<div class="content-wrapper">
+	<button mat-flat-button color="primary">Primary button</button>
+	<button mat-flat-button color="accent">Success button</button>
+	<button mat-flat-button color="warn">Error button</button>
+</div>
+
+<!-- ngIfActive test -->
+<h3>Click button to reveal content</h3>
+<div class="content-wrapper">
+	<button toggleActive mat-flat-button>button</button>
+</div>
+
+<div *ifActive class="active-content">Toggling state</div>

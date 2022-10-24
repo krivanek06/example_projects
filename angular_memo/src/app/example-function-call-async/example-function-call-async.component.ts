@@ -25,7 +25,7 @@ export class ExampleFunctionCallAsyncComponent implements OnInit {
 		// maybe once it will be sorting
 	}
 
-	hardMathEquasion(anime: AnimeData): Observable<number> {
+	hardMathEquasionAsyncFunctionCall(anime: AnimeData): Observable<number> {
 		console.log(`[Async] Function call ${anime.title}`);
 		this.functionCallExecution += 1;
 		return this.apiService.hardMathEquasionAsync(anime);

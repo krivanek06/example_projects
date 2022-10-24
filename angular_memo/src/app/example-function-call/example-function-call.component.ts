@@ -22,7 +22,7 @@ export class ExampleFunctionCallComponent implements OnInit {
 		);
 	}
 
-	hardMathEquasion(anime: AnimeData): number {
+	hardMathEquasionFunctionCall(anime: AnimeData): number {
 		console.log(`Function call ${anime.title}`);
 		this.functionCallExecution += 1;
 		return hardMathEquasion(anime.score);

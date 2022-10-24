@@ -8,7 +8,7 @@ import { AnimeData } from '../data.model';
  * so that one cachedAnimeDataCalculations instance is shared accros every pipes instance
  */
 @Pipe({
-	name: 'hardMathEquasionMemo',
+	name: 'hardMathEquasionMemoPipe',
 })
 export class HardMathEquasionMemoPipe implements PipeTransform {
 	private static cachedAnimeDataCalculations: { [id: string]: number } = {};

@@ -4,7 +4,7 @@ import { ApiService } from '../api.service';
 import { AnimeData } from '../data.model';
 
 @Pipe({
-	name: 'hardMathEquasion',
+	name: 'hardMathEquasionPipe',
 })
 export class HardMathEquasionPipe implements PipeTransform {
 	constructor(private apiService: ApiService) {}

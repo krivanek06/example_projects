@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { delay, of } from 'rxjs';
 import { ButtonDirective, ButtonPrimaryDirective, ButtonSuccessDirective } from './examples/button.directive';
+import { DestroyDirective } from './examples/destroy.directive';
 import { ActiveDirective, ActiveService, ToggleActiveDirective } from './examples/ifActive.directive';
 import { InputCompositionComponent } from './examples/input-composition.directive';
 import { InputTrackingDirective, TypingTrackingDirective } from './examples/input-tracking.directive';
@@ -32,10 +33,13 @@ import { InputTrackingDirective, TypingTrackingDirective } from './examples/inpu
 })
 export class CompositionNewComponent {
 	control = new FormControl<string>('');
+
+	private untilDestroyed = inject(DestroyDirective).pipe;
+
 	constructor(private activeService: ActiveService) {
 		// mocking HTTP request -> reveal content after 2sec
 		of([])
-			.pipe(delay(2000))
+			.pipe(delay(2000), this.untilDestroyed)
 			.subscribe(() => this.activeService.toggleActivation());
 
 		this.control.valueChanges.subscribe((x) => console.log('Value from app-input-composition: ', x));

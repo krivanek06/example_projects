@@ -23,10 +23,17 @@ export class ApiService {
 	}
 
 	hardMathEquasionAsync(anime: AnimeData): Observable<number> {
-		console.log(`ApiService hard equasion executing for: ${anime.title} `);
+		//console.log(`%c ApiService hard equasion executing for: ${anime.title} `, 'color: blue');
+
 		return this.http.get<any>(this.API_DUMMY).pipe(
-			map(() => hardMathEquasion(anime.score)),
-			catchError(() => of(hardMathEquasion(anime.score)))
+			map(() => {
+				console.log(`%c [ApiService] API call: ${anime.title}`, 'color: red');
+				return hardMathEquasion(anime.score);
+			}),
+			catchError(() => {
+				console.log(`%c [ApiService] API call: ${anime.title}`, 'color: red');
+				return of(hardMathEquasion(anime.score));
+			})
 		);
 	}
 }

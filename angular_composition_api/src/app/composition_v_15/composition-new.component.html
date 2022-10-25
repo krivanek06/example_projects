@@ -6,12 +6,15 @@
 </div>
 
 <!-- ngIfActive test -->
-<h3>Click button to reveal content</h3>
 <div class="content-wrapper">
-	<button toggleActive mat-flat-button>button</button>
+	<button toggleActive mat-flat-button>button toggle reveal</button>
 </div>
 
-<div *ifActive class="active-content">Toggling state</div>
+<!-- display 2 revealing block -->
+<div class="content-wrapper">
+	<div *ifActive class="active-content">Toggling state 1111</div>
+	<div *ifActive class="active-content">Toggling state 2222</div>
+</div>
 
 <!-- example -->
 <div class="content-wrapper">

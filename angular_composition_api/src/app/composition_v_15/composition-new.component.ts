@@ -22,6 +22,7 @@ import { InputTrackingDirective, TypingTrackingDirective } from './examples/inpu
 		ToggleActiveDirective,
 		ActiveDirective,
 		TypingTrackingDirective,
+		//DestroyDirective,
 		InputTrackingDirective,
 		MatInputModule,
 		MatFormFieldModule,
@@ -29,7 +30,7 @@ import { InputTrackingDirective, TypingTrackingDirective } from './examples/inpu
 		InputCompositionComponent,
 	],
 	standalone: true,
-	providers: [ActiveService],
+	providers: [ActiveService, DestroyDirective],
 })
 export class CompositionNewComponent {
 	control = new FormControl<string>('');
@@ -38,10 +39,16 @@ export class CompositionNewComponent {
 
 	constructor(private activeService: ActiveService) {
 		// mocking HTTP request -> reveal content after 2sec
+		const randomDelay = this.randomNumberMs(1, 7);
+		console.log('randomDelay', randomDelay);
 		of([])
-			.pipe(delay(2000), this.untilDestroyed)
+			.pipe(delay(randomDelay), this.untilDestroyed)
 			.subscribe(() => this.activeService.toggleActivation());
 
 		this.control.valueChanges.subscribe((x) => console.log('Value from app-input-composition: ', x));
+	}
+
+	private randomNumberMs(minimum: number, maximum: number) {
+		return (Math.floor(Math.random() * (maximum - minimum + 1)) + minimum) * 1000;
 	}
 }

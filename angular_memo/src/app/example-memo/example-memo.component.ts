@@ -15,14 +15,10 @@ export class ExampleMemoComponent implements OnInit {
 	loadedAnime$!: Observable<AnimeData[]>;
 	constructor(private apiService: ApiService) {}
 
-	hardMathEquasion = memo((animeData: AnimeData) => this.apiService.hardMathEquasionAsync(animeData));
+	hardMathEquasionMemoInline = memo((animeData: AnimeData) => this.apiService.hardMathEquasionAsync(animeData));
 
 	ngOnInit(): void {
 		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(scan((acc, curr) => [...acc, curr], [] as AnimeData[]));
-	}
-
-	sortBy(key: 'name' | 'score' | 'custom'): void {
-		// maybe once it will be sorting
 	}
 
 	onClick(): void {}

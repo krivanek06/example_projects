@@ -18,13 +18,10 @@ export class ExampleFunctionCallAsyncComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(scan((acc, curr) => [...acc, curr], [] as AnimeData[]));
-		this.loadedAnime$.subscribe(console.log);
+		// this.loadedAnime$.subscribe(console.log);
 	}
 
-	sortBy(key: 'name' | 'score' | 'custom'): void {
-		// maybe once it will be sorting
-	}
-
+	// @customMemoize()
 	hardMathEquasionAsyncFunctionCall(anime: AnimeData): Observable<number> {
 		console.log(`[Async] Function call ${anime.title}`);
 		this.functionCallExecution += 1;

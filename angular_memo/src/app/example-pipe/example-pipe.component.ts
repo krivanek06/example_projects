@@ -18,9 +18,5 @@ export class ExamplePipeComponent implements OnInit {
 		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(scan((acc, curr) => [...acc, curr], [] as AnimeData[]));
 	}
 
-	sortBy(key: 'name' | 'score' | 'custom'): void {
-		// maybe once it will be sorting
-	}
-
 	onClick(): void {}
 }

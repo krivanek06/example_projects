@@ -1,8 +1,8 @@
-<h2>MEMO component</h2>
+<h2>Composition API example</h2>
 
 <div class="component-wrapper">
-	<div>Dummy text</div>
-	<button mat-flat-button color="primary" (click)="onClick()">Just for fun</button>
+	<div>Function call execution: {{functionCallExecution}}</div>
+	<button mat-flat-button color="primary">Just for fun</button>
 </div>
 
 <!-- search anime -->
@@ -17,6 +17,5 @@
 	<div>{{ data.source }}</div>
 	<div>{{ data.duration }}</div>
 	<div>{{ data.score }}</div>
-	<div>{{ hardMathEquasionCustomMemo(data) | async }}</div>
-	<!-- <div>{{ hardMathEquasionMemoInline(data) | async }}</div> -->
+	<div>{{ hardMathEquasionAsyncFunctionCall(data) | async }}</div>
 </div>

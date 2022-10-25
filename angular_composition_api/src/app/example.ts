@@ -13,8 +13,8 @@ export abstract class ParentCalculation {
 @Component({
 	selector: 'app-component1',
 	template: `
-		<button (click)="calculation1()">calculation1</button>
-		<button (click)="calculation2()">calculation2</button>
+		<button mat-raised-button (click)="calculation1()">calculation1</button>
+		<button mat-raised-button (click)="calculation2()">calculation2</button>
 	`,
 })
 export class Component1 extends ParentCalculation {

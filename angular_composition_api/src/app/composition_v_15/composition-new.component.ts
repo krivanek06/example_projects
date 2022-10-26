@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { delay, of } from 'rxjs';
-import { ButtonDirective, ButtonPrimaryDirective } from './examples/button.directive';
+import { ButtonDirective, ButtonPrimaryDirective, TestComponent } from './examples/button.directive';
 import { DestroyDirective } from './examples/destroy.directive';
 import { ActiveDirective, ActiveService, ToggleActiveDirective } from './examples/ifActive.directive';
 import { InputCompositionComponent } from './examples/input-composition.directive';
@@ -27,6 +27,7 @@ import { InputTrackingDirective, TypingTrackingDirective } from './examples/inpu
 		MatFormFieldModule,
 		ReactiveFormsModule,
 		InputCompositionComponent,
+		TestComponent,
 	],
 	standalone: true,
 	providers: [ActiveService, DestroyDirective],

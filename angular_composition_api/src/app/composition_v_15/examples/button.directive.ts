@@ -1,4 +1,5 @@
-import { Directive, Host, HostBinding, HostListener, Input } from '@angular/core';
+import { Component, Directive, Host, HostBinding, HostListener, Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Directive({
 	selector: '[appClickLogging]',
@@ -35,5 +36,22 @@ export class ButtonPrimaryDirective {
 	@HostListener('click', ['$event'])
 	onClick() {
 		console.log('%c [Log Primary]: Primary button logging click event', 'color: #3f51b5');
+	}
+}
+
+@Component({
+	selector: 'app-test',
+	template: '<button mat-flat-button color="warn">Logging Component</button>',
+	hostDirectives: [
+		{
+			directive: ButtonDirective,
+		},
+	],
+	imports: [MatButtonModule],
+	standalone: true,
+})
+export class TestComponent {
+	constructor(@Host() buttonDirective: ButtonDirective) {
+		buttonDirective.type = 'error';
 	}
 }

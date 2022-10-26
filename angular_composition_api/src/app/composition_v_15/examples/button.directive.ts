@@ -1,14 +1,13 @@
-import { Directive, HostBinding, HostListener, Input } from '@angular/core';
+import { Directive, Host, HostBinding, HostListener, Input } from '@angular/core';
 
-// base directive, not working until it is not extended
 @Directive({
-	selector: 'button[undefined]',
+	selector: '[appClickLogging]',
 	standalone: true,
 })
 export class ButtonDirective {
 	@HostBinding('attr.data-button-type')
 	@Input()
-	type: 'success' | 'error' | 'primary' = 'primary';
+	type: 'success' | 'error' | 'primary' | 'default' = 'default';
 
 	@HostListener('click', ['$event'])
 	onClick() {
@@ -16,26 +15,7 @@ export class ButtonDirective {
 	}
 }
 
-// directive for accent mat-button
-@Directive({
-	selector: 'button[color="accent"]',
-	standalone: true,
-	hostDirectives: [
-		{
-			directive: ButtonDirective,
-		},
-	],
-})
-export class ButtonSuccessDirective {
-	constructor(buttonDirective: ButtonDirective) {
-		buttonDirective.type = 'success';
-	}
-
-	@HostListener('click', ['$event'])
-	onClick() {
-		console.log('%c [Log Success]: Success button logging click event', 'color: #ff4081');
-	}
-}
+// ---------------------------------------------
 
 // directive for primary mat-button
 @Directive({
@@ -48,7 +28,7 @@ export class ButtonSuccessDirective {
 	],
 })
 export class ButtonPrimaryDirective {
-	constructor(buttonDirective: ButtonDirective) {
+	constructor(@Host() buttonDirective: ButtonDirective) {
 		buttonDirective.type = 'primary';
 	}
 

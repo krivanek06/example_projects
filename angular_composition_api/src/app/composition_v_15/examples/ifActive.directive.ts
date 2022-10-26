@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Directive, HostListener, inject, Injectable, OnInit } from '@angular/core';
+import { Directive, HostListener, inject, Injectable, OnInit, SkipSelf } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
@@ -41,7 +41,7 @@ export class ActiveDirective implements OnInit {
 	standalone: true,
 })
 export class ToggleActiveDirective {
-	private activeService = inject(ActiveService);
+	constructor(@SkipSelf() private activeService: ActiveService) {}
 
 	@HostListener('click', ['$event'])
 	onClick() {

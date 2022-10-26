@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Host, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,7 +37,7 @@ export class CompositionNewComponent {
 
 	private untilDestroyed = inject(DestroyDirective).pipe;
 
-	constructor(private activeService: ActiveService) {
+	constructor(@Host() private activeService: ActiveService) {
 		// mocking HTTP request -> reveal content after 2sec
 		const randomDelay = this.randomNumberMs(1, 7);
 		console.log('randomDelay', randomDelay);

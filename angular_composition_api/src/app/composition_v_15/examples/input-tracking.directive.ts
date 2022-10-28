@@ -19,10 +19,6 @@ export class TypingTrackingDirective {
 @Directive({
 	selector: 'textarea',
 	standalone: true,
-	hostDirectives: [
-		{
-			directive: TypingTrackingDirective,
-		},
-	],
+	hostDirectives: [TypingTrackingDirective],
 })
 export class InputTrackingDirective {}

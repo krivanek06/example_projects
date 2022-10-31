@@ -1,8 +1,10 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Component, Host, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { delay, of } from 'rxjs';
 import {
 	ButtonDirective,
@@ -34,6 +36,9 @@ import { InputTrackingDirective, TypingTrackingDirective } from './examples/inpu
 		ReactiveFormsModule,
 		InputCompositionComponent,
 		TestComponent,
+		DragDropModule,
+		MatTooltipModule,
+		// ButtonTooltipDirective,
 	],
 	standalone: true,
 	providers: [ActiveService, DestroyDirective],

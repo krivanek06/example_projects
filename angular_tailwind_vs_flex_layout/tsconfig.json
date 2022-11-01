@@ -2,40 +2,29 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-      "baseUrl": "./",
-      "outDir": "./dist/out-tsc",
-      "allowSyntheticDefaultImports": true,
-      "sourceMap": true,
-      "declaration": false,
-      "downlevelIteration": true,
-      "experimentalDecorators": true,
-      "moduleResolution": "node",
-      "importHelpers": true,
-      "target": "es2015",
-      "module": "es2020",
-      "lib": ["es2018", "dom"],
-      "strict": false, // when all options below are true, we are safe to only use strict: true
-      "noImplicitAny": true, // default false, true if strict
-      "noImplicitThis": true, // default false, true if strict
-      "alwaysStrict": true, // default false, true if strict
-      "strictBindCallApply": true, // default false, true if strict
-      "strictFunctionTypes": true, // default false, true if strict
-      "strictNullChecks": false, // default false, true if strict
-      "strictPropertyInitialization": false // default false, true if strict
-      // "useUnknownInCatchVariables": false // released in 4.4, default false, true if strict
-
-      // rules below are configured by default when installing with ng new in v14
-      // "target": "es2020",
-      // "lib": ["es2020", "dom"],
-      // "forceConsistentCasingInFileNames": true,
-      // "noImplicitOverride": true,
-      // "noPropertyAccessFromIndexSignature": true,
-      // "noImplicitReturns": true,
-      // "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ]
   },
   "angularCompilerOptions": {
-      "strictInjectionParameters": false, // default false, recommended true
-      "strictInputAccessModifiers": false, // default false, recommended true
-      "strictTemplates": false // default false, recommended true
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   }
 }

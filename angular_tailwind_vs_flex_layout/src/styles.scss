@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.wrapper {
+  margin: 10px;
+  padding: 12px;
+  width: 98%;
+}
+
+.divide {
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+.item {
+  border-radius: 0.2em;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding: 12px 8px;
+  text-transform: uppercase;
+  min-width: 120px;
+}
+
+.item-big {
+  border-radius: 0.2em;
+  color: #f67070;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding: 30px 20px;
+  text-transform: uppercase;
+}
+
+.item-1 {
+  background-color: #009169;
+}
+
+.item-2 {
+  background-color: #55b296;
+}
+
+.item-3 {
+  background-color: #9fd3c3;
+}
+
+.item-4 {
+  background-color: #e7b013;
+}
+
+.item-5 {
+  background-color: #073443;
+}
+
+@layer utilities {
+  .g-custom-height {
+    @apply tw-min-h-[120px] tw-bg-slate-400;
+  }
+
+  .g-background-secondary {
+    @apply tw-text-blue-500 tw-bg-green-500 tw-grid tw-content-center tw-text-center #{!important};
+  }
+}

@@ -1,0 +1,56 @@
+<!-- example 1. -->
+<h1>Example 1. Tailwind</h1>
+
+<h3>Example 1. Approach 1.</h3>
+<div class="wrapper tw-flex tw-flex-col gap-0 sm:tw-flex-row sm:tw-gap-3">
+  <div class="item item-1 tw-flex-3.5">fxFlex="35%"</div>
+  <div class="item item-2 tw-flex-2 tw-order-3">fxFlex="20%"</div>
+  <div class="item item-3 tw-flex-4.5">fxFlex</div>
+</div>
+
+<h3>Example 1. Approach 2.</h3>
+<div class="wrapper tw-flex tw-flex-col gap-0 sm:tw-flex-row sm:tw-gap-3">
+  <div class="item item-1 tw-basis-[35%]">fxFlex="35%"</div>
+  <div class="item item-2 tw-basis-[20%] tw-order-3">fxFlex="20%"</div>
+  <div class="item item-3 tw-basis-[45%]">fxFlex</div>
+</div>
+
+<div class="divide"></div>
+
+<!-- example 2. -->
+<h1>Example 2. Tailwind</h1>
+
+<div class="wrapper tw-flex tw-flex-col tw-gap-2 sm:tw-flex-row sm:tw-gap-5">
+  <!-- mock offset -->
+  <div class="tw-hidden sm:tw-block tw-basis-[50px]"></div>
+  <div class="item item-4 tw-flex-1">fxFlexOffset="50px"</div>
+  <div class="item item-5 sm:tw-basis-[200px]">Item 5 200px</div>
+</div>
+
+<!-- example 3. -->
+<h1>Example 3. Tailwind</h1>
+<div class="wrapper tw-flex tw-flex-col tw-gap-2 sm:tw-flex-row">
+  <div class="item item-1 tw-order-1 sm:tw-order-3">fxFlex 1st</div>
+  <div
+    class="item-big item-2 tw-order-2 tw-text-cenoverflow-x: hidden;ter tw-flex-1"
+  >
+    center center
+  </div>
+  <div class="item item-3 tw-order-3 sm:tw-order-1">fxFlex 3rd</div>
+</div>
+
+<!-- example 4. -->
+<h1>Example 4. Tailwind</h1>
+
+<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-4">
+  <div
+    class="item item-1 tw-col-span-1 sm:tw-col-span-2 tw-order-2 sm:tw-order-1"
+  >
+    Header
+  </div>
+  <div class="item item-2 tw-col-span-1 tw-order-3 sm:tw-order-2">Side</div>
+  <div class="item item-3 tw-col-span-1 tw-order-1 sm:tw-order-3">Content</div>
+  <div class="item item-4 tw-col-span-1 sm:tw-col-span-2 tw-order-4">
+    Footer
+  </div>
+</div>

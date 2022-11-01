@@ -36,13 +36,8 @@ module.exports = {
         "primary-medium": "#2196F3",
         "primary-color-dark": "#058ADB",
         "primary-secondary": "#d7edff",
-
-        danger: "#E84E40",
-        success: "#53C432",
-        warning: "#DB8E00",
       },
     },
-    extend: {},
   },
   plugins: [],
 };

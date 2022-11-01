@@ -31,6 +31,7 @@ body {
   font-size: 20px;
   padding: 12px 8px;
   text-transform: uppercase;
+  min-width: 120px;
 }
 
 .item-big {
@@ -60,4 +61,14 @@ body {
 
 .item-5 {
   background-color: #073443;
+}
+
+@layer utilities {
+  .g-custom-height {
+    @apply tw-min-h-[120px] tw-bg-slate-400;
+  }
+
+  .g-background-secondary {
+    @apply tw-text-blue-500 tw-bg-green-500 tw-grid tw-content-center tw-text-center #{!important};
+  }
 }

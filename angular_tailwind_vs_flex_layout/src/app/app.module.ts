@@ -9,11 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ExampleFlexLayoutComponent } from './example-flex-layout/example-flex-layout.component';
 import { ExampleTailwindComponent } from './example-tailwind/example-tailwind.component';
+import { ExampleTailwindMoreComponent } from './example-tailwind-more/example-tailwind-more.component';
 @NgModule({
   declarations: [
     AppComponent,
     ExampleFlexLayoutComponent,
     ExampleTailwindComponent,
+    ExampleTailwindMoreComponent,
   ],
   imports: [
     BrowserModule,

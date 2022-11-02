@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable, scan } from 'rxjs';
 import { ApiService } from '../api.service';
 import { AnimeData } from '../data.model';
-import { customMemoize, memo } from './memo';
+import { customMemoizeObs, memo } from './memo';
 
 @Component({
 	selector: 'app-example-memo',
@@ -23,8 +23,10 @@ export class ExampleMemoComponent implements OnInit {
 
 	onClick(): void {}
 
-	@customMemoize()
+	// @customMemoize() // <= re-executes Observables
+	@customMemoizeObs()
 	hardMathEquasionCustomMemo(animeData: AnimeData): Observable<number> {
+		console.log('execution');
 		return this.apiService.hardMathEquasionAsync(animeData);
 	}
 }

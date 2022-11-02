@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DoCheck, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, scan, tap } from 'rxjs';
 import { AnimeData, hardMathEquasion } from '../data.model';
@@ -9,11 +9,17 @@ import { AnimeData, hardMathEquasion } from '../data.model';
 	styleUrls: ['./example-function-call.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleFunctionCallComponent implements OnInit {
+export class ExampleFunctionCallComponent implements OnInit, DoCheck {
+	@Input() title!: string;
+
 	animeSearchControl: FormControl<AnimeData> = new FormControl<AnimeData>({} as AnimeData, { nonNullable: true });
 	loadedAnime$!: Observable<AnimeData[]>;
 	functionCallExecution = 0;
+	color = this.getRandomColor();
 	constructor() {}
+	ngDoCheck(): void {
+		// console.log(`%c ${this.title} ngDoCheck`, `color: ${this.color}`);
+	}
 
 	ngOnInit(): void {
 		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(
@@ -23,7 +29,7 @@ export class ExampleFunctionCallComponent implements OnInit {
 	}
 
 	hardMathEquasionFunctionCall(anime: AnimeData): number {
-		console.log(`Function call ${anime.title}`);
+		console.log(`%c Function call ${anime.title}, times ${this.functionCallExecution}`, `color: ${this.color}`);
 		this.functionCallExecution += 1;
 		return hardMathEquasion(anime.score);
 	}
@@ -51,5 +57,14 @@ export class ExampleFunctionCallComponent implements OnInit {
 
 		const result = Math.round(endTime - startTime);
 		return result;
+	}
+
+	private getRandomColor(): string {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i < 6; i++) {
+			color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
 	}
 }

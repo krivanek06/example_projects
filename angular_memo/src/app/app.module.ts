@@ -10,11 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { SearchAnimeComponent } from './components/search-anime/search-anime.component';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
-import { ExampleCompositionApiComponent } from './example-composition-api/example-composition-api.component';
 import { ExampleFunctionCallAsyncComponent } from './example-function-call-async/example-function-call-async.component';
 import { ExampleFunctionCallComponent } from './example-function-call/example-function-call.component';
 import { HardMathEquasionMemoPipe } from './example-pipe/hard-math-equasion-memo.pipe';
 import { HardMathEquasionPipe } from './example-pipe/hard-math-equasion.pipe';
+import { PurePipe } from './example-pipe/pure.pipe';
 import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -27,8 +27,8 @@ import { MaterialModule } from './material.module';
 		SearchAnimeComponent,
 		HardMathEquasionPipe,
 		HardMathEquasionMemoPipe,
+		PurePipe,
 		TableHeaderComponent,
-		ExampleCompositionApiComponent,
 	],
 	imports: [
 		BrowserModule,

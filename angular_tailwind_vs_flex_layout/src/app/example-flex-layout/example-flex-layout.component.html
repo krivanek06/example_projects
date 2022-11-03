@@ -70,3 +70,24 @@
   <div class="item item-3" gdArea="content">Content</div>
   <div class="item item-4" gdArea="footer">Footer</div>
 </div>
+
+<!-- example 5. show/hide -->
+<h1>Example 5. show/hide</h1>
+<div class="wrapper" fxLayout fxLayoutGap="10px">
+  <div class="item item-1" fxFlex>item 1</div>
+  <div class="item item-2" fxFlex fxHide.lt-sm>item 2</div>
+  <div class="item item-3" fxFlex fxHide.lt-md>item 3</div>
+  <div class="item item-4" fxFlex fxHide.lt-lg>item 4</div>
+  <div class="item item-5" fxFlex>item 5</div>
+</div>
+
+<!-- example 6. taking more space -->
+<h1>Example 6. more space</h1>
+<div class="wrapper" fxLayout fxLayoutGap="10px">
+  <div class="item item-1" fxFlex="20" fxFlex.md="50" fxFlex.gt-md="80">
+    item 1
+  </div>
+  <div class="item item-5" fxFlex="80" fxFlex.md="50" fxFlex.gt-md="20">
+    item 5
+  </div>
+</div>

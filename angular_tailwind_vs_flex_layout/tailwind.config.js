@@ -13,6 +13,7 @@ module.exports = {
     screens: {
       ...defaultTheme.screens,
       xs: "475px",
+      "md-ss": [{ min: "668px", max: "767px" }],
     },
     flex: {
       ...defaultTheme.flex,

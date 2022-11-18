@@ -43,3 +43,29 @@ button {
 mat-form-field {
 	width: 100%;
 }
+
+.g-banner {
+	align-items: center;
+	display: flex;
+	gap: 16px;
+	margin: auto;
+	place-content: center;
+	padding: 16px;
+	border: 1px solid black;
+	border-radius: 6px;
+}
+
+.g-banner-error {
+	background-color: red;
+	color: white;
+}
+
+.g-banner-success {
+	background-color: green;
+	color: blue;
+}
+
+.g-banner-default {
+	background-color: gray;
+	color: white;
+}

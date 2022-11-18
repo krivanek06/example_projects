@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { delay, of } from 'rxjs';
+import { BannerDefaultDirective, BannerErrorDirective, BannerSuccessDirective } from './examples/banner.directive';
 import {
 	ButtonDirective,
 	ButtonDirectiveEnhancedDirective,
@@ -39,6 +40,11 @@ import { InputTrackingDirective, TypingTrackingDirective } from './examples/inpu
 		DragDropModule,
 		MatTooltipModule,
 		// ButtonTooltipDirective,
+		// ButtonTooltipDirective,
+		// MatButtonCustomDirective,
+		BannerDefaultDirective,
+		BannerSuccessDirective,
+		BannerErrorDirective,
 	],
 	standalone: true,
 	providers: [ActiveService, DestroyDirective],

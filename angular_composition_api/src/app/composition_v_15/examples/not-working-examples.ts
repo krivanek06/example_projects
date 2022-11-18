@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 // ---------------------------------------------
 // ---------------------------------------------
 // ---------------------------------------------
@@ -7,9 +8,20 @@
 
   Error: NG0903: Directives cannot inherit Components. Directive MatButtonCustom is attempting to extend component MatButton
 
-@Directive({
+  import { Platform } from "@angular/cdk/platform";
+  import { Directive, ElementRef, inject, NgZone } from "@angular/core";
+  import { MatButton } from "@angular/material/button";
+
+*/
+
+import { Platform } from '@angular/cdk/platform';
+import { Directive, ElementRef, inject, NgZone } from '@angular/core';
+import { MatButton } from '@angular/material/button';
+
+@Component({
 	selector: '[appMatButtonCustom]',
 	standalone: true,
+	template: '',
 })
 export class MatButtonCustom extends MatButton {
 	constructor() {
@@ -29,5 +41,3 @@ export class MatButtonCustom extends MatButton {
 	],
 })
 export class MatButtonCustomDirective {}
-
-*/

@@ -1,12 +1,13 @@
 ## Examples
 
+- Live example on: https://stackblitz.com/edit/angular-ivy-vgvswr?file=package.json,src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fbanner.directive.ts
+
 ### Button Examples
 
-- Button loading state [`done`]
+- Button loading state
   - Each button will have an `isLoading` property which will display a `mat-spinner` if set to true
-- Action tracking button [`done`]
-  - Adding a global behaviour of each material component that they will log a message on which location they was clicked
-- Applying mat-tooltip on every mat-menu [`todo`]
-  - Adding some global/congifurable text for mat-menu as tooltip
-- Applying mat-tooltip on every image [`todo`]
-  - When user hover hover an image, show ALT tags in a tooltip
+- Action tracking button
+  - Adding a global log behaviour for each material component
+- Applying mat-tooltip on every mat-menu - Not working
+- Configure NgIf for custom funcionality
+- Banner directive

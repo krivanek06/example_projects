@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, scan } from 'rxjs';
 import { ApiService } from '../api.service';
-import { AnimeData } from '../data.model';
-import { customMemoizeObs, memo } from './memo';
+import { AnimeData, hardMathEquasion } from '../data.model';
+import { customMemoize, customMemoizeObs } from './memo';
 
 @Component({
 	selector: 'app-example-memo',
@@ -15,8 +15,6 @@ export class ExampleMemoComponent implements OnInit {
 	loadedAnime$!: Observable<AnimeData[]>;
 	constructor(private apiService: ApiService) {}
 
-	hardMathEquasionMemoInline = memo((animeData: AnimeData) => this.apiService.hardMathEquasionAsync(animeData));
-
 	ngOnInit(): void {
 		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(scan((acc, curr) => [...acc, curr], [] as AnimeData[]));
 	}
@@ -25,8 +23,14 @@ export class ExampleMemoComponent implements OnInit {
 
 	// @customMemoize() // <= re-executes Observables
 	@customMemoizeObs()
-	hardMathEquasionCustomMemo(animeData: AnimeData): Observable<number> {
+	functionAsync(animeData: AnimeData): Observable<number> {
 		console.log('execution');
 		return this.apiService.hardMathEquasionAsync(animeData);
+	}
+
+	@customMemoize()
+	functionNormal(anime: AnimeData): number {
+		console.log(`%c Function call ${anime.title}`, `color: #FEA42C`);
+		return hardMathEquasion(anime.score);
 	}
 }

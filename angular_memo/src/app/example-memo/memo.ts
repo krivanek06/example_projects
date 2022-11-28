@@ -3,32 +3,32 @@ import { tap } from 'rxjs';
 
 import { of } from 'rxjs';
 
-export function memo<T extends Function>(f: T) {
+export function customMemoize() {
 	// Value cache stored in the closure
 	const cacheLookup: { [key: string]: any } = {};
 
-	return function (...newArgs: any[]) {
-		// newArgs can be object -> stringify it
-		const keyString = JSON.stringify(newArgs);
+	return (target: any, key: any, descriptor: any) => {
+		const originalMethod = descriptor.value;
 
-		// check if value in cache
-		if (!cacheLookup[keyString]) {
-			// cache result
-			cacheLookup[keyString] = f.apply(this, newArgs);
-		}
-
-		return cacheLookup[keyString];
-	};
-}
-
-// decorator @customMemoize()
-export function customMemoize() {
-	return function (target: any, key: any, descriptor: any) {
-		const oldFunction = descriptor.value;
-		const newFunction = memo(oldFunction);
 		descriptor.value = function () {
-			return newFunction.apply(this, arguments as any);
+			// arguments can be object -> stringify it
+			const keyString = JSON.stringify(arguments);
+
+			// cached data
+			if (keyString in cacheLookup) {
+				console.log('reading from cache');
+				return cacheLookup[keyString];
+			}
+
+			// call the function with arguments
+			const calculation = originalMethod.apply(this, arguments);
+			// save data to cache
+			cacheLookup[keyString] = calculation;
+			// return calculated data
+			return calculation;
 		};
+
+		return descriptor;
 	};
 }
 

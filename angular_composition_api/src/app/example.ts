@@ -31,3 +31,36 @@ export class Pipe1 extends ParentCalculation implements PipeTransform {
 		return this.calculation1(value);
 	}
 }
+
+// ---------------------
+
+interface Machine {
+	name: string;
+	doYourJob: () => void;
+}
+
+class CarMachine implements Machine {
+	name: string;
+
+	constructor(name: string) {
+		this.name = name;
+	}
+
+	doYourJob(): void {
+		// some hardcore sophisticated logic
+	}
+}
+
+class Factory {
+	machines: Machine[];
+	constructor(machines: Machine[]) {
+		this.machines = machines;
+	}
+
+	work(): void {
+		this.machines.forEach((d) => d.doYourJob());
+	}
+}
+
+const machine1 = new CarMachine('M 100');
+const factory = new Factory([machine1]);

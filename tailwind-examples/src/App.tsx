@@ -1,7 +1,10 @@
+import { DarkModeButtons } from './components/button-dark-mode';
+import { GrayScaleImg } from './components/image-manipulation';
+
 export const App = () => {
 	return (
-		<div className="App flex flex-col gap-10 divide-y-2 p-10">
-			<div className="p-4 text-center bg-green-400">Yolo</div>
+		<div className="flex flex-col items-center gap-10 p-10">
+			<div className="p-4 text-center bg-green-400 w-full">Yolo</div>
 			{/* Example 1. GRID vs FLEXBOX */}
 			{/* <GripExample />
 			<FlexboxExample /> */}
@@ -10,7 +13,10 @@ export const App = () => {
 			{/* <ButtonLoading /> */}
 
 			{/* -------------------- */}
-			<img src="src/assets/ngrx.png" />
+			<GrayScaleImg />
+
+			{/* dark mode */}
+			<DarkModeButtons />
 		</div>
 	);
 };

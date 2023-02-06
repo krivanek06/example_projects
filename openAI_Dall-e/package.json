@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "ts-node --esm src/generate.ts ",
+    "start": "ts-node --esm src/generate.ts ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

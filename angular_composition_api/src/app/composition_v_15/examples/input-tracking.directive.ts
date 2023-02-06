@@ -1,10 +1,10 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, OnInit } from '@angular/core';
 
 @Directive({
 	selector: 'appTypingTracking',
 	standalone: true,
 })
-export class TypingTrackingDirective {
+export class TypingTrackingDirective implements OnInit {
 	@HostListener('focus', ['$event.target'])
 	onFocus(target: any) {
 		console.log(target.value);
@@ -14,6 +14,10 @@ export class TypingTrackingDirective {
 	onInput(value: string) {
 		console.log(`%c Tracking input: ${value}`, 'color: #91ea45');
 	}
+
+	ngOnInit(): void {
+		console.log('Parent init');
+	}
 }
 
 @Directive({
@@ -21,4 +25,8 @@ export class TypingTrackingDirective {
 	standalone: true,
 	hostDirectives: [TypingTrackingDirective],
 })
-export class InputTrackingDirective {}
+export class InputTrackingDirective implements OnInit {
+	ngOnInit(): void {
+		console.log('Child init');
+	}
+}

@@ -36,9 +36,19 @@ export class ReactiveFormsExampleComponent implements OnInit {
 
 	submit() {
 		this.form.markAllAsTouched();
+
 		if (!this.form.invalid) {
 			console.log('submit', this.form.value);
+
+			this.form.reset();
+			this.form.controls.name.setErrors(null);
+			this.form.controls.favoriteCountries.setErrors(null);
+			this.form.markAsUntouched();
 		}
+	}
+
+	onResetForm() {
+		this.form.reset();
 	}
 
 	onDogNameToggleValidators() {

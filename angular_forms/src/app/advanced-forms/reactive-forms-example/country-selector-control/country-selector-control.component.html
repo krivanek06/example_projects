@@ -5,5 +5,7 @@
 			[{{country.code}}] {{country.name}}
 		</mat-option>
 	</mat-select>
-	<mat-error *ngIf="countryControl.errors?.['required'] "> Dude just pick a country</mat-error>
+	<mat-error *ngIf="countryControl.touched && countryControl.errors?.['required'] ">
+		Dude just pick a country
+	</mat-error>
 </mat-form-field>

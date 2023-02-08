@@ -26,15 +26,6 @@
 	<button mat-stroked-button type="button" (click)="onDogNameToggleValidators()">Toggle validators</button>
 
 	<!-- pick countries -->
-	<!-- <mat-form-field appearance="fill">
-		<mat-label>Pick countries</mat-label>
-		<mat-select [multiple]="true" formControlName="favoriteCountries">
-			<mat-option *ngFor="let country of listedCountries" [value]="country">
-				[{{country.code}}] {{country.name}}
-			</mat-option>
-		</mat-select>
-		<mat-error *ngIf="form.controls.name.errors?.['required'] "> Dude just pick a country</mat-error>
-	</mat-form-field> -->
 	<app-country-selector-control formControlName="favoriteCountries"></app-country-selector-control>
 
 	<!-- list form array -->
@@ -48,14 +39,6 @@
 			</mat-form-field>
 
 			<!-- pick country -->
-			<!-- <mat-form-field appearance="fill">
-				<mat-label>Pick countries</mat-label>
-				<mat-select formControlName="favoriteCountry">
-					<mat-option *ngFor="let country of listedCountries" [value]="country">
-						[{{country.code}}] {{country.name}}
-					</mat-option>
-				</mat-select>
-			</mat-form-field> -->
 			<app-country-selector-control formControlName="favoriteCountry"></app-country-selector-control>
 
 			<!-- remove button -->
@@ -73,4 +56,6 @@
 
 	<!-- submit button -->
 	<button mat-flat-button color="primary" type="submit">Submit form</button>
+	<!-- reset form -->
+	<button mat-stroked-button color="accent" type="button" (click)="onResetForm()">Reset form</button>
 </form>

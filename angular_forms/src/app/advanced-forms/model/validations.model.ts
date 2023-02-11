@@ -19,7 +19,9 @@ export const ValidateRepeatedCharsImpl = (control: AbstractControl): ValidationE
 
 export const ValidateNoNumber = (): AsyncValidatorFn => ValidateNoNumberImpl;
 
-export const ValidateNoNumberImpl = (control: AbstractControl): Observable<ValidationErrors | null> => {
+export const ValidateNoNumberImpl = (
+	control: AbstractControl
+): Observable<ValidationErrors | null> => {
 	const characterMatching = /\d/;
 	const value = String(control.value);
 

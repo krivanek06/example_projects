@@ -13,7 +13,7 @@ interface ExistingLinks {
 })
 export class AppComponent implements OnInit {
 	closeScreen$!: Observable<boolean>;
-	isOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+	isOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 	activeLink: string = '';
 
@@ -26,9 +26,7 @@ export class AppComponent implements OnInit {
 
 	constructor(private breakpointObserver: BreakpointObserver) {}
 	ngOnInit(): void {
-		this.closeScreen$ = this.breakpointObserver
-			.observe(['(max-width: 1280px)'])
-			.pipe(map((x) => x.matches));
+		this.closeScreen$ = this.breakpointObserver.observe(['(max-width: 1280px)']).pipe(map((x) => x.matches));
 
 		// need to show sidenav if view is large
 		this.closeScreen$.subscribe((isMdDownScreen) => {

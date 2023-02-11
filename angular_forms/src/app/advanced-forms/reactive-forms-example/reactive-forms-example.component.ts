@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Country, getData } from 'country-list';
-import { ValidateNoNumber, ValidateRepeatedChars, ValidateRepeatedCharsImpl } from './reactive-form.model';
+import {
+	ValidateNoNumber,
+	ValidateRepeatedChars,
+	ValidateRepeatedCharsImpl,
+} from '../model/validations.model';
 
 @Component({
 	selector: 'app-reactive-forms-example',
@@ -31,7 +35,9 @@ export class ReactiveFormsExampleComponent implements OnInit {
 	listedCountries = getData();
 
 	ngOnInit() {
-		this.form.controls.favoriteCountries.valueChanges.subscribe((c) => console.log(`You have ${c?.length} countries`));
+		this.form.controls.favoriteCountries.valueChanges.subscribe((c) =>
+			console.log(`You have ${c?.length} countries`)
+		);
 	}
 
 	submit() {

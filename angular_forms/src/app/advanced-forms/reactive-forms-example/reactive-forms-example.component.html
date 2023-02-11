@@ -15,21 +15,32 @@
 		<mat-label>Dog name</mat-label>
 		<input matInput formControlName="dogName" autocomplete="off" />
 		<mat-hint align="end">{{form.controls.dogName.value.length}}/10</mat-hint>
-		<mat-error *ngIf="form.controls.dogName.errors?.['minlength'] || form.controls.dogName.errors?.['maxlength']">
+		<mat-error
+			*ngIf="form.controls.dogName.errors?.['minlength'] || form.controls.dogName.errors?.['maxlength']"
+		>
 			Dog name min characters between 3 - 10
 		</mat-error>
-		<mat-error *ngIf="form.controls.dogName.errors?.['repeatingCharts'] "> Repeated characteds</mat-error>
-		<mat-error *ngIf="form.controls.dogName.errors?.['containsNumber'] "> No number dude </mat-error>
+		<mat-error *ngIf="form.controls.dogName.errors?.['repeatingCharts'] ">
+			Repeated characters</mat-error
+		>
+		<mat-error *ngIf="form.controls.dogName.errors?.['containsNumber'] ">
+			No number dude
+		</mat-error>
 	</mat-form-field>
 
 	<!-- button to toggle validators -->
-	<button mat-stroked-button type="button" (click)="onDogNameToggleValidators()">Toggle validators</button>
+	<button mat-stroked-button type="button" (click)="onDogNameToggleValidators()">
+		Toggle validators
+	</button>
 
 	<!-- pick countries -->
 	<app-country-selector-control formControlName="favoriteCountries"></app-country-selector-control>
 
 	<!-- list form array -->
-	<ng-container formArrayName="myFiends" *ngFor="let formArray of form.controls.myFiends.controls; let i=index">
+	<ng-container
+		formArrayName="myFiends"
+		*ngFor="let formArray of form.controls.myFiends.controls; let i=index"
+	>
 		<h4>My Friend</h4>
 		<div [formGroup]="formArray" class="flex items-center gap-5">
 			<!-- my name -->
@@ -39,7 +50,9 @@
 			</mat-form-field>
 
 			<!-- pick country -->
-			<app-country-selector-control formControlName="favoriteCountry"></app-country-selector-control>
+			<app-country-selector-control
+				formControlName="favoriteCountry"
+			></app-country-selector-control>
 
 			<!-- remove button -->
 			<button mat-icon-button color="warn" (click)="onRemoveFriend(i)">
@@ -57,5 +70,7 @@
 	<!-- submit button -->
 	<button mat-flat-button color="primary" type="submit">Submit form</button>
 	<!-- reset form -->
-	<button mat-stroked-button color="accent" type="button" (click)="onResetForm()">Reset form</button>
+	<button mat-stroked-button color="accent" type="button" (click)="onResetForm()">
+		Reset form
+	</button>
 </form>

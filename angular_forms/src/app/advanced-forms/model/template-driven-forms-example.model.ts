@@ -1,15 +1,15 @@
 import { Country } from 'country-list';
 
-export interface IFormGroupData {
+export interface LovelyForm {
 	name: string;
 	dogName: string;
 	favoriteCountries: Country[];
-	myFiends: IFiendControlData[];
+	myFiends: LovelyFormFriends[];
 }
 
-export interface IFiendControlData {
+export interface LovelyFormFriends {
 	name: string;
-	favoriteCountries: Country | null;
+	favoriteCountry: Country[];
 }
 
 // export type ControlsOf<T extends Record<string, any>> = {

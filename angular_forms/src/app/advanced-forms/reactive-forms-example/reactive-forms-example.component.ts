@@ -17,7 +17,7 @@ export class ReactiveFormsExampleComponent implements OnInit {
 		name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
 		dogName: new FormControl('', {
 			nonNullable: true,
-			validators: [ValidateRepeatedChars()],
+			validators: [ValidateRepeatedChars(), Validators.maxLength(10), Validators.minLength(3)],
 			asyncValidators: [ValidateNoNumber()],
 		}),
 		favoriteCountries: new FormControl<Country[]>([], {
@@ -62,7 +62,11 @@ export class ReactiveFormsExampleComponent implements OnInit {
 		if (hasValidator) {
 			this.form.controls.dogName.clearValidators();
 		} else {
-			this.form.controls.dogName.addValidators(ValidateRepeatedChars());
+			this.form.controls.dogName.addValidators([
+				ValidateRepeatedChars(),
+				Validators.maxLength(10),
+				Validators.minLength(3),
+			]);
 		}
 
 		// automatically update UI - if not present, I have to type

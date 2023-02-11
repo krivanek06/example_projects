@@ -1,0 +1,76 @@
+<pre>
+    {{ form.value | json }}
+</pre>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+	<!-- my name -->
+	<mat-form-field>
+		<mat-label>My name</mat-label>
+		<input matInput formControlName="name" autocomplete="off" />
+		<mat-error *ngIf="form.controls.name.errors?.['required'] "> Dude this is required</mat-error>
+	</mat-form-field>
+
+	<!-- dog name -->
+	<mat-form-field>
+		<mat-label>Dog name</mat-label>
+		<input matInput formControlName="dogName" autocomplete="off" />
+		<mat-hint align="end">{{form.controls.dogName.value.length}}/10</mat-hint>
+		<mat-error
+			*ngIf="form.controls.dogName.errors?.['minlength'] || form.controls.dogName.errors?.['maxlength']"
+		>
+			Dog name min characters between 3 - 10
+		</mat-error>
+		<mat-error *ngIf="form.controls.dogName.errors?.['repeatingCharts'] ">
+			Repeated characters</mat-error
+		>
+		<mat-error *ngIf="form.controls.dogName.errors?.['containsNumber'] ">
+			No number dude
+		</mat-error>
+	</mat-form-field>
+
+	<!-- button to toggle validators -->
+	<button mat-stroked-button type="button" (click)="onDogNameToggleValidators()">
+		Toggle validators
+	</button>
+
+	<!-- pick countries -->
+	<app-country-selector-control formControlName="favoriteCountries"></app-country-selector-control>
+
+	<!-- list form array -->
+	<ng-container
+		formArrayName="myFiends"
+		*ngFor="let formArray of form.controls.myFiends.controls; let i=index"
+	>
+		<h4>My Friend</h4>
+		<div [formGroup]="formArray" class="flex items-center gap-5">
+			<!-- my name -->
+			<mat-form-field>
+				<mat-label>Friend name</mat-label>
+				<input matInput formControlName="name" autocomplete="off" />
+			</mat-form-field>
+
+			<!-- pick country -->
+			<app-country-selector-control
+				formControlName="favoriteCountry"
+			></app-country-selector-control>
+
+			<!-- remove button -->
+			<button mat-icon-button color="warn" (click)="onRemoveFriend(i)">
+				<mat-icon>close</mat-icon>
+			</button>
+		</div>
+	</ng-container>
+
+	<!-- add form group -->
+	<button mat-stroked-button color="primary" type="button" (click)="onAddFriend()">
+		<mat-icon>add</mat-icon>
+		Add a friend
+	</button>
+
+	<!-- submit button -->
+	<button mat-flat-button color="primary" type="submit">Submit form</button>
+	<!-- reset form -->
+	<button mat-stroked-button color="accent" type="button" (click)="onResetForm()">
+		Reset form
+	</button>
+</form>

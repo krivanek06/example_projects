@@ -47,6 +47,7 @@ export class ReactiveFormsExampleComponent implements OnInit {
 			console.log('submit', this.form.value);
 
 			this.form.reset();
+			this.form.controls.myFiends.clear();
 			this.form.controls.name.setErrors(null);
 			this.form.controls.favoriteCountries.setErrors(null);
 			this.form.markAsUntouched();

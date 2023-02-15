@@ -32,6 +32,7 @@ export class CountrySelectorControlComponent implements ControlValueAccessor, On
 	writeValue(countries: Country[]): void {
 		this.countryControl.patchValue(countries, { emitEvent: false, onlySelf: true });
 		this.countryControl.markAsUntouched();
+		this.countryControl.setErrors(null);
 	}
 
 	/*

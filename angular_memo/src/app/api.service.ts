@@ -8,8 +8,9 @@ import { AnimeData, AnimeDataAPI, hardMathEquasion } from './data.model';
 })
 export class ApiService {
 	// api docs: https://docs.api.jikan.moe/#tag/anime/operation/getAnimeSearch
-	private readonly API = 'https://api.jikan.moe/v4/anime';
-	private readonly API_DUMMY = 'https://www.quandl.com/api/v3/databases';
+	readonly API = 'https://api.jikan.moe/v4/anime';
+	readonly API_DUMMY = 'https://www.quandl.com/api/v3/databases';
+
 	constructor(private http: HttpClient) {}
 
 	/**

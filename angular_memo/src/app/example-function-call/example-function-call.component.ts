@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, scan, tap } from 'rxjs';
 import { AnimeData, hardMathEquasion } from '../data.model';
@@ -7,7 +7,7 @@ import { AnimeData, hardMathEquasion } from '../data.model';
 	selector: 'app-example-function-call',
 	templateUrl: './example-function-call.component.html',
 	styleUrls: ['./example-function-call.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	//changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleFunctionCallComponent implements OnInit, DoCheck {
 	@Input() title!: string;

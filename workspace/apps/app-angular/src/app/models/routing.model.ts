@@ -23,4 +23,8 @@ export const CUSTOM_ROUTES = {
     title: 'Angular Memo',
     path: 'angular-memo',
   },
+  angularNgrxForms: {
+    title: 'Angular NgRx Forms',
+    path: 'angular-ngrx-forms',
+  },
 } as const;

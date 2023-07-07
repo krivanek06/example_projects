@@ -11,4 +11,8 @@ export const CUSTOM_ROUTES = {
     title: 'Angular RxJS',
     path: 'angular-rxjs',
   },
+  angularForms: {
+    title: 'Angular Forms',
+    path: 'angular-forms',
+  },
 } as const;

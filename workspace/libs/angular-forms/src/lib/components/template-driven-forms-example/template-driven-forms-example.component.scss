@@ -1,0 +1,23 @@
+:host {
+	@apply flex flex-col md:flex-row gap-10;
+
+	form {
+		@apply flex flex-col gap-4 flex-1 w-full;
+	}
+
+	mat-form-field {
+		@apply w-full;
+	}
+
+	pre {
+		@apply p-4 rounded-lg bg-green-100 mb-4 flex-1 w-full;
+	}
+
+	h3 {
+		@apply text-center text-xl;
+	}
+
+	h4 {
+		@apply mb-0;
+	}
+}

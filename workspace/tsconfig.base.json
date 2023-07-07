@@ -22,7 +22,8 @@
       "@workspace/angular-injection-token": ["libs/angular-injection-token/src/index.ts"],
       "@workspace/angular-memo": ["libs/angular-memo/src/index.ts"],
       "@workspace/angular-ngrx-forms": ["libs/angular-ngrx-forms/src/index.ts"],
-      "@workspace/angular-rxjs": ["libs/angular-rxjs/src/index.ts"]
+      "@workspace/angular-rxjs": ["libs/angular-rxjs/src/index.ts"],
+      "@workspace/typescript-examples": ["libs/typescript-examples/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

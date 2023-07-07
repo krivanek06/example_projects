@@ -13,6 +13,10 @@ export const appRoutes: Route[] = [
         path: CUSTOM_ROUTES.angularDomManipulation.path,
         loadChildren: () => import('@workspace/angular-dom-manipulation').then((m) => m.routes),
       },
+      {
+        path: CUSTOM_ROUTES.angularRxjs.path,
+        loadChildren: () => import('@workspace/angular-rxjs').then((m) => m.routes),
+      },
     ],
   },
 ];

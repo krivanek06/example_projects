@@ -6,11 +6,9 @@ export const CUSTOM_ROUTES = {
   angularDomManipulation: {
     title: 'Angular DOM Manipulation',
     path: 'angular-dom-manipulation',
-    subPages: {
-      example1: {
-        title: 'Example 1',
-        path: 'example_1',
-      },
-    },
   },
-};
+  angularRxjs: {
+    title: 'Angular RxJS',
+    path: 'angular-rxjs',
+  },
+} as const;

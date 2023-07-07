@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@workspace/angular-composition-api": ["libs/angular-composition-api/src/index.ts"],
-      "@workspace/angular-dom-manipulation": ["libs/angular-dom-manipulation/src/index.ts"]
+      "@workspace/angular-dom-manipulation": ["libs/angular-dom-manipulation/src/index.ts"],
+      "@workspace/angular-rxjs": ["libs/angular-rxjs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

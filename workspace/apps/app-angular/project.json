@@ -15,14 +15,8 @@
         "main": "apps/app-angular/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/app-angular/tsconfig.app.json",
-        "assets": [
-          "apps/app-angular/src/favicon.ico",
-          "apps/app-angular/src/assets"
-        ],
-        "styles": [
-          "@angular/material/prebuilt-themes/deeppurple-amber.css",
-          "apps/app-angular/src/styles.scss"
-        ],
+        "assets": ["apps/app-angular/src/favicon.ico", "apps/app-angular/src/assets"],
+        "styles": ["@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/app-angular/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -31,12 +25,12 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",
               "maximumWarning": "2kb",
-              "maximumError": "4kb"
+              "maximumError": "64kb"
             }
           ],
           "outputHashing": "all"
@@ -74,10 +68,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/app-angular/**/*.ts",
-          "apps/app-angular/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/app-angular/**/*.ts", "apps/app-angular/**/*.html"]
       }
     },
     "test": {

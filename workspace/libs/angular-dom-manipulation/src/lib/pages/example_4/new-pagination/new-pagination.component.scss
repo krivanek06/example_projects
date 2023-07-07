@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  //gap: 16px;
+
+  table {
+    width: 100%;
+  }
+
+  .c-bubble-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

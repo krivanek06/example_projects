@@ -11,7 +11,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  padding: 24px;
+  // padding: 24px;
   background-color: #cccccc;
 }
 
@@ -19,7 +19,8 @@ button {
   min-width: 250px !important;
 }
 
-/* styles for loading mat spinner */
+/* STYLES FROM ANGULAR-COMPOSITION-API */
+
 .button-loading {
   .mat-button-wrapper {
     visibility: hidden;
@@ -64,4 +65,66 @@ mat-form-field {
 .g-banner-default {
   background-color: gray;
   color: white;
+}
+
+/* STYLES FROM ANGULAR-DOM-MANIPULATION */
+
+.g-basic-highlight {
+  transition: All 0.3s ease-out !important;
+  cursor: pointer !important;
+
+  &:hover {
+    transform: scale(1.03) !important;
+  }
+}
+
+.g-present-box {
+  background-color: red !important;
+}
+
+.g-highlight {
+  background-color: blue !important;
+}
+
+// card example
+.g-card {
+  -webkit-box-shadow: 5px 5px 15px 5px #686868;
+  box-shadow: 5px 5px 15px 5px #686868;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: #d0d0d0;
+}
+
+// Used to create bubble pagination
+.g-bubble {
+  background-color: #dfe1e7;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #a4acb7;
+    color: white;
+  }
+
+  &__active {
+    background-color: #a4acb7;
+    color: white;
+  }
+
+  &__disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+    color: #a4acb7;
+    &:hover {
+      background-color: #dfe1e7 !important;
+    }
+  }
 }

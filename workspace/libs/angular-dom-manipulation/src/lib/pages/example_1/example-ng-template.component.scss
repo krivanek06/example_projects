@@ -1,0 +1,12 @@
+.c-message-wrapper {
+  padding: 16px;
+  background-color: aqua;
+  border-radius: 6px;
+  border: 1px solid black;
+  margin-bottom: 16px;
+}
+
+:host {
+  display: flex;
+  flex-flow: column;
+}

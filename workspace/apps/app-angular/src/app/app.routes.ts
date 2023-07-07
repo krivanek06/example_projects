@@ -25,6 +25,10 @@ export const appRoutes: Route[] = [
         path: CUSTOM_ROUTES.angularInjectionToken.path,
         loadChildren: () => import('@workspace/angular-injection-token').then((m) => m.routes),
       },
+      {
+        path: CUSTOM_ROUTES.angularMemo.path,
+        loadChildren: () => import('@workspace/angular-memo').then((m) => m.routes),
+      },
     ],
   },
 ];

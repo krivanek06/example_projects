@@ -19,4 +19,8 @@ export const CUSTOM_ROUTES = {
     title: 'Angular Injection Token',
     path: 'angular-injection-token',
   },
+  angularMemo: {
+    title: 'Angular Memo',
+    path: 'angular-memo',
+  },
 } as const;

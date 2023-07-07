@@ -15,4 +15,8 @@ export const CUSTOM_ROUTES = {
     title: 'Angular Forms',
     path: 'angular-forms',
   },
+  angularInjectionToken: {
+    title: 'Angular Injection Token',
+    path: 'angular-injection-token',
+  },
 } as const;

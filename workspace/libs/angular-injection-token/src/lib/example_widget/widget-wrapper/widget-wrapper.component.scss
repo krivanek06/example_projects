@@ -1,0 +1,28 @@
+mat-card-header {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-card {
+  background: #f2f2f27a;
+  min-height: 200px;
+
+  .refresh-content {
+    opacity: 0.3;
+  }
+
+  mat-card-header {
+    margin-bottom: 10px;
+  }
+
+  mat-card-content {
+    margin-top: 25px;
+  }
+}
+
+mat-spinner {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}

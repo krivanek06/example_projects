@@ -21,6 +21,10 @@ export const appRoutes: Route[] = [
         path: CUSTOM_ROUTES.angularForms.path,
         loadChildren: () => import('@workspace/angular-forms').then((m) => m.routes),
       },
+      {
+        path: CUSTOM_ROUTES.angularInjectionToken.path,
+        loadChildren: () => import('@workspace/angular-injection-token').then((m) => m.routes),
+      },
     ],
   },
 ];

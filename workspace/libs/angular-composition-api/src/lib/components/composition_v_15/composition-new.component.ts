@@ -8,64 +8,65 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { delay, of } from 'rxjs';
 import { BannerDefaultDirective, BannerErrorDirective, BannerSuccessDirective } from './examples/banner.directive';
 import {
-	ButtonDirective,
-	ButtonDirectiveEnhancedDirective,
-	ButtonPrimaryDirective,
-	TestComponent,
+  ButtonDirective,
+  ButtonDirectiveEnhancedDirective,
+  ButtonPrimaryDirective,
+  TestComponent,
 } from './examples/button.directive';
 import { DestroyDirective } from './examples/destroy.directive';
 import { ActiveDirective, ActiveService, ToggleActiveDirective } from './examples/ifActive.directive';
-import { InputCompositionComponent } from './examples/input-composition.directive';
+import { InputCompositionComponent, InputCompositionTwoComponent } from './examples/input-composition.directive';
 import { InputTrackingDirective, TypingTrackingDirective } from './examples/input-tracking.directive';
 
 @Component({
-	selector: 'app-composition-new',
-	templateUrl: './composition-new.component.html',
-	styleUrls: ['./composition-new.component.scss'],
-	imports: [
-		ButtonDirective,
-		ButtonPrimaryDirective,
-		MatButtonModule,
-		ToggleActiveDirective,
-		ActiveDirective,
-		TypingTrackingDirective,
-		//DestroyDirective,
-		ButtonDirectiveEnhancedDirective,
-		InputTrackingDirective,
-		MatInputModule,
-		MatFormFieldModule,
-		ReactiveFormsModule,
-		InputCompositionComponent,
-		TestComponent,
-		DragDropModule,
-		MatTooltipModule,
-		// ButtonTooltipDirective,
-		// ButtonTooltipDirective,
-		// MatButtonCustomDirective,
-		BannerDefaultDirective,
-		BannerSuccessDirective,
-		BannerErrorDirective,
-	],
-	standalone: true,
-	providers: [ActiveService, DestroyDirective],
+  selector: 'app-composition-new',
+  templateUrl: './composition-new.component.html',
+  styleUrls: ['./composition-new.component.scss'],
+  imports: [
+    ButtonDirective,
+    ButtonPrimaryDirective,
+    MatButtonModule,
+    ToggleActiveDirective,
+    ActiveDirective,
+    TypingTrackingDirective,
+    //DestroyDirective,
+    ButtonDirectiveEnhancedDirective,
+    InputTrackingDirective,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    InputCompositionComponent,
+    TestComponent,
+    DragDropModule,
+    MatTooltipModule,
+    // ButtonTooltipDirective,
+    // ButtonTooltipDirective,
+    // MatButtonCustomDirective,
+    BannerDefaultDirective,
+    BannerSuccessDirective,
+    BannerErrorDirective,
+    InputCompositionTwoComponent,
+  ],
+  standalone: true,
+  providers: [ActiveService, DestroyDirective],
 })
 export class CompositionNewComponent {
-	control = new FormControl<string>('');
+  control = new FormControl<string>('');
 
-	private untilDestroyed = inject(DestroyDirective).pipe;
+  private untilDestroyed = inject(DestroyDirective).pipe;
 
-	constructor(@Host() private activeService: ActiveService) {
-		// mocking HTTP request -> reveal content after 2sec
-		const randomDelay = this.randomNumberMs(1, 7);
-		console.log('randomDelay', randomDelay);
-		of([])
-			.pipe(delay(randomDelay), this.untilDestroyed)
-			.subscribe(() => this.activeService.toggleActivation());
+  constructor(@Host() private activeService: ActiveService) {
+    // mocking HTTP request -> reveal content after 2sec
+    const randomDelay = this.randomNumberMs(1, 7);
+    console.log('randomDelay', randomDelay);
+    of([])
+      .pipe(delay(randomDelay), this.untilDestroyed)
+      .subscribe(() => this.activeService.toggleActivation());
 
-		this.control.valueChanges.subscribe((x) => console.log('Value from app-input-composition: ', x));
-	}
+    this.control.valueChanges.subscribe((x) => console.log('Value from app-input-composition: ', x));
+  }
 
-	private randomNumberMs(minimum: number, maximum: number) {
-		return (Math.floor(Math.random() * (maximum - minimum + 1)) + minimum) * 1000;
-	}
+  private randomNumberMs(minimum: number, maximum: number) {
+    return (Math.floor(Math.random() * (maximum - minimum + 1)) + minimum) * 1000;
+  }
 }

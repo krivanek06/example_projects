@@ -1,49 +1,37 @@
-<form [formGroup]="form">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title> Switch Map</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="w-full">
-        <mat-label>Switch map</mat-label>
-        <input matInput formControlName="switchMapField" [autocomplete]="false" />
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+<div class="wrapper">
+  <button
+    [ngClass]="{ active: higherOrderControl.value === 'switchMapField' }"
+    (click)="onHigherOrderChange('switchMapField')"
+    [style.color]="colors.switchMapField"
+  >
+    Switch Map
+  </button>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Exhaust Map</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="w-full">
-        <mat-label>Exhaust map</mat-label>
-        <input matInput formControlName="exhaustMapField" [autocomplete]="false" />
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+  <button
+    [ngClass]="{ active: higherOrderControl.value === 'exhaustMapField' }"
+    (click)="onHigherOrderChange('exhaustMapField')"
+    [style.color]="colors.exhaustMapField"
+  >
+    Exhaust Map
+  </button>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Concat Map</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="w-full">
-        <mat-label>Concat map</mat-label>
-        <input matInput formControlName="concatMapField" [autocomplete]="false" />
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+  <button
+    [ngClass]="{ active: higherOrderControl.value === 'concatMapField' }"
+    (click)="onHigherOrderChange('concatMapField')"
+    [style.color]="colors.concatMapField"
+  >
+    Concat Map
+  </button>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Merge Map</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="w-full">
-        <mat-label>Merge map</mat-label>
-        <input matInput formControlName="margeMapField" [autocomplete]="false" />
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
-</form>
+  <button
+    [ngClass]="{ active: higherOrderControl.value === 'margeMapField' }"
+    (click)="onHigherOrderChange('margeMapField')"
+    [style.color]="colors.margeMapField"
+  >
+    Marge Map
+  </button>
+</div>
+
+<!-- canvas -->
+<h2>Click somewhere on canvas. Wait time is 1.5s</h2>
+<canvas #canvas (click)="onCanvasClick($event)" class="wrapper-canvas" width="800" height="400"></canvas>

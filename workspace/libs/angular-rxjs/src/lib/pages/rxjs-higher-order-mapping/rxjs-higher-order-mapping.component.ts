@@ -1,117 +1,87 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { Observable, combineLatest, concatMap, exhaustMap, mergeMap, switchMap } from 'rxjs';
-import { withLatestFrom } from 'rxjs/operators';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { concatMap, delay, exhaustMap, fromEvent, mergeMap, of, startWith, switchMap, tap } from 'rxjs';
 
+type HigherOrderTypes = 'switchMapField' | 'margeMapField' | 'concatMapField' | 'exhaustMapField';
 @Component({
   selector: 'app-rxjs-higher-order-mapping',
   templateUrl: './rxjs-higher-order-mapping.component.html',
   styleUrls: ['./rxjs-higher-order-mapping.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatCardModule],
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class RxjsHigherOrderMappingComponent implements OnInit {
-  form!: FormGroup;
+  higherOrderControl = new FormControl<HigherOrderTypes>('switchMapField', { nonNullable: true });
 
-  private url = 'https://flash-the-slow-api.herokuapp.com/delay/4000';
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  @ViewChild('canvas', { static: true })
+  canvas!: ElementRef<HTMLCanvasElement>;
 
-  get switchMapField(): AbstractControl {
-    return this.form.get('switchMapField') as AbstractControl;
-  }
+  colors = {
+    switchMapField: 'red',
+    margeMapField: 'green',
+    concatMapField: 'black',
+    exhaustMapField: 'purple',
+  };
 
-  get margeMapField(): AbstractControl {
-    return this.form.get('margeMapField') as AbstractControl;
-  }
-
-  get concatMapField(): AbstractControl {
-    return this.form.get('concatMapField') as AbstractControl;
-  }
-
-  get exhaustMapField(): AbstractControl {
-    return this.form.get('exhaustMapField') as AbstractControl;
-  }
+  private ctx!: CanvasRenderingContext2D;
 
   ngOnInit(): void {
-    this.initForm();
+    this.ctx = this.canvas.nativeElement.getContext('2d')!;
 
-    this.initSwitchMap();
-    this.initExhaustMap();
-    this.initConcatMap();
-    this.initMergeMap();
-
-    this.withLatestFromTest();
-    this.combineLatestTest();
+    this.higherOrderControl.valueChanges
+      .pipe(
+        startWith(this.higherOrderControl.value),
+        switchMap((type) =>
+          fromEvent(this.canvas.nativeElement, 'click').pipe(
+            this.resolveOperatorByType(type)((e) =>
+              of(1).pipe(
+                delay(1500),
+                tap(() => this.drawPoint(e as MouseEvent))
+              )
+            )
+          )
+        )
+      )
+      .subscribe();
   }
 
-  private makeRequest(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders(),
-    };
-
-    httpOptions.headers.append('Access-Control-Allow-Origin', '*');
-    httpOptions.headers.append('Content-Type', 'application/json');
-    httpOptions.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-
-    return this.http.get(this.url, httpOptions);
+  onHigherOrderChange(type: HigherOrderTypes): void {
+    this.higherOrderControl.setValue(type);
   }
 
-  /*
-    Used when needed value from multiple observable [user, groups, tickets] , but reacting only on user change
-  */
-  private withLatestFromTest(): void {
-    this.switchMapField.valueChanges
-      .pipe(withLatestFrom(this.concatMapField.valueChanges, this.margeMapField.valueChanges))
-      .subscribe((x) => console.log('with latest from', x));
+  onCanvasClick(e: MouseEvent): void {
+    const color = 'yellow';
+    const positionX = e.offsetX;
+    const positionY = e.offsetY;
+
+    this.ctx.fillStyle = color;
+    this.ctx.fillRect(positionX, positionY, 15, 15);
+
+    setTimeout(() => {
+      this.ctx.clearRect(positionX, positionY, 15, 15);
+    }, 1500);
   }
 
-  /*
-    Used when we need to react on each value when they change (and are not null)
-    i.e. : when want to get only groups in which user is part of
-  */
-  private combineLatestTest(): void {
-    combineLatest([
-      this.switchMapField.valueChanges,
-      this.concatMapField.valueChanges,
-      this.margeMapField.valueChanges,
-    ]).subscribe((x) => console.log('combine latest', x));
+  private resolveOperatorByType(type: HigherOrderTypes) {
+    switch (type) {
+      case 'switchMapField':
+        return switchMap;
+      case 'margeMapField':
+        return mergeMap;
+      case 'concatMapField':
+        return concatMap;
+      case 'exhaustMapField':
+        return exhaustMap;
+    }
   }
 
-  private initExhaustMap(): void {
-    this.exhaustMapField.valueChanges
-      .pipe(exhaustMap(() => this.makeRequest()))
-      .subscribe((res) => console.log('exhaust map', res));
-  }
+  private drawPoint(e: MouseEvent): void {
+    const color = this.colors[this.higherOrderControl.value];
+    const positionX = e.offsetX;
+    const positionY = e.offsetY;
 
-  private initConcatMap(): void {
-    this.concatMapField.valueChanges
-      .pipe(concatMap(() => this.makeRequest()))
-      .subscribe((res) => console.log('concat map', res));
-  }
-
-  private initMergeMap(): void {
-    this.margeMapField.valueChanges
-      .pipe(mergeMap(() => this.makeRequest()))
-      .subscribe((res) => console.log('merge map', res));
-  }
-
-  private initSwitchMap(): void {
-    this.switchMapField.valueChanges
-      .pipe(switchMap(() => this.makeRequest()))
-      .subscribe((res) => console.log('switchMap', res));
-  }
-
-  private initForm(): void {
-    this.form = this.fb.group({
-      switchMapField: [],
-      margeMapField: [],
-      concatMapField: [],
-      exhaustMapField: [],
-    });
+    this.ctx.fillStyle = color;
+    this.ctx.fillRect(positionX, positionY, 15, 15);
   }
 }

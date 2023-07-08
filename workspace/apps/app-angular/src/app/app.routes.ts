@@ -1,10 +1,20 @@
 import { Route } from '@angular/router';
+import { MainRoutesComponent } from './main-routes/main-routes.component';
 import { CUSTOM_ROUTES } from './models/routing.model';
 
 export const appRoutes: Route[] = [
   {
     path: '',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'main-routes',
+      },
+      {
+        path: 'main-routes',
+        component: MainRoutesComponent,
+      },
       {
         path: CUSTOM_ROUTES.angularCompositionApi.path,
         loadChildren: () => import('@workspace/angular-composition-api').then((m) => m.routes),

@@ -28,3 +28,5 @@ export const CUSTOM_ROUTES = {
     path: 'angular-ngrx-forms',
   },
 } as const;
+
+export const CUSTOM_ROUTES_ARRAY = Object.values(CUSTOM_ROUTES);

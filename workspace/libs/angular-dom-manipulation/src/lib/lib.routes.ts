@@ -12,6 +12,11 @@ export const routes: Route[] = [
     component: AngularDomManipulationComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'example-1',
+      },
+      {
         path: 'example-1',
         component: ExampleNgTemplateComponent,
       },

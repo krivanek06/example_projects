@@ -1,0 +1,11 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-[20%]">
+  <a
+    *ngFor="let route of CUSTOM_ROUTES_ARRAY"
+    (click)="onRouterNavigation(route)"
+    mat-stroked-button
+    color="primary"
+    class="rounded-md"
+  >
+    {{ route.title }}
+  </a>
+</div>

@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { ConsoleLogExamplesComponent } from './pages/console-log-examples/console-log-examples.component';
 import { RxjsHigherOrderMappingComponent } from './pages/rxjs-higher-order-mapping/rxjs-higher-order-mapping.component';
 
 export const routes: Route[] = [
@@ -13,6 +14,10 @@ export const routes: Route[] = [
       {
         path: 'rxjs-higher-order-mapping',
         component: RxjsHigherOrderMappingComponent,
+      },
+      {
+        path: 'console-logging',
+        component: ConsoleLogExamplesComponent,
       },
     ],
   },

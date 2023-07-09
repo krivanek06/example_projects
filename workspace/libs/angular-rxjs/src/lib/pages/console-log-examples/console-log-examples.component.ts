@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { delay, mergeAll, mergeMap, of, switchMap } from 'rxjs';
+import { delay, exhaustMap, interval, mergeAll, mergeMap, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'workspace-console-log-examples',
@@ -11,7 +11,17 @@ import { delay, mergeAll, mergeMap, of, switchMap } from 'rxjs';
 })
 export class ConsoleLogExamplesComponent implements OnInit {
   ngOnInit(): void {
-    this.exampleOfMergeMap();
+    // this.exampleOfMergeMap();
+    // this.exampleOfExhaustMap();
+  }
+
+  private exampleOfExhaustMap(): void {
+    const source$ = interval(500);
+
+    /**
+     * returns: 0 ... 7 ... 14 ... 21 ..
+     */
+    source$.pipe(exhaustMap((value) => of(value).pipe(delay(3000)))).subscribe(console.log);
   }
 
   private exampleOfMergeMap(): void {

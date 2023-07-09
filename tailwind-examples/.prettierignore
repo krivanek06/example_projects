@@ -1,8 +1,0 @@
-package.json
-package-lock.json
-yarn.lock
-dist
-coverage
-node_modules
-.vscode/*
-/.angular/cache

@@ -1,0 +1,19 @@
+.active-content {
+  padding: 24px;
+  place-content: center;
+  background: white;
+  border-radius: 8px;
+  margin: 24px;
+}
+
+app-input-composition {
+  width: 100%;
+}
+
+.content-wrapper {
+  margin-top: 24px;
+  display: flex;
+  flex-flow: row;
+  gap: 24px;
+  justify-content: space-between;
+}

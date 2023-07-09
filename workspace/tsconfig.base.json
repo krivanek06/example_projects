@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/angular-composition-api": ["libs/angular-composition-api/src/index.ts"],
+      "@workspace/angular-dom-manipulation": ["libs/angular-dom-manipulation/src/index.ts"],
+      "@workspace/angular-elements": ["libs/angular-elements/src/index.ts"],
+      "@workspace/angular-forms": ["libs/angular-forms/src/index.ts"],
+      "@workspace/angular-injection-token": ["libs/angular-injection-token/src/index.ts"],
+      "@workspace/angular-memo": ["libs/angular-memo/src/index.ts"],
+      "@workspace/angular-ngrx-forms": ["libs/angular-ngrx-forms/src/index.ts"],
+      "@workspace/angular-rxjs": ["libs/angular-rxjs/src/index.ts"],
+      "@workspace/typescript-examples": ["libs/typescript-examples/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

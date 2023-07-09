@@ -1,8 +1,0 @@
-<div class="c-wrapper">
-  <ct-test-ui-item
-    *ngFor="let user of selectedUsers; let i = index"
-    (removeClickEmitter)="onUserRemove(i)"
-    [showRemoveButton]="true"
-    [displayText]="user.id + ' ' + user.displayName"
-  ></ct-test-ui-item>
-</div>

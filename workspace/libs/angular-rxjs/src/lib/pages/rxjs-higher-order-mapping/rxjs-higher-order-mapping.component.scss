@@ -1,0 +1,27 @@
+button {
+  height: 45px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.active {
+  background-color: #b5b5b5;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.wrapper-canvas {
+  margin: auto;
+  margin-top: 40px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+h2 {
+  text-align: center;
+}

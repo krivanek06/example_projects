@@ -1,0 +1,26 @@
+{
+  "name": "typescript-examples",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/typescript-examples/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/typescript-examples",
+        "main": "libs/typescript-examples/src/index.ts",
+        "tsConfig": "libs/typescript-examples/tsconfig.lib.json",
+        "assets": ["libs/typescript-examples/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/typescript-examples/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

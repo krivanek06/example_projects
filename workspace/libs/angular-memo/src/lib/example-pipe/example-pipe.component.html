@@ -1,0 +1,26 @@
+<h2>Pipe call component</h2>
+
+<div class="flex justify-end">
+  <button mat-flat-button color="primary" (click)="onClick()">Just for fun</button>
+</div>
+
+<!-- search anime -->
+<app-search-anime [formControl]="animeSearchControl"></app-search-anime>
+
+<!-- table header -->
+<app-table-header></app-table-header>
+
+<!-- table body -->
+<div
+  *ngFor="let data of loadedAnime$ | async"
+  class="grid grid-cols-5 gap-2 p-2 mb-1 border-b border-gray-400 border-solid"
+>
+  <div>{{ data.title_english ?? data.title }}</div>
+  <div>{{ data.source }}</div>
+  <div>{{ data.duration }}</div>
+  <div>{{ data.score }}</div>
+  <!-- <div>{{ hardMathEquasionAsyncFunctionCallPipe | pure: data | async }}</div> -->
+  <div>{{ hardMathEquasionFunctionCallPipe | pure : data }}</div>
+  <!-- <div>{{ (data| hardMathEquasionPipe) | async }}</div> -->
+  <!-- <div>{{ (data| hardMathEquasionMemoPipe) | async }}</div> -->
+</div>

@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { inject, Pipe, PipeTransform } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 import { AnimeData } from '../shared/models/data.model';
@@ -8,7 +8,7 @@ import { AnimeData } from '../shared/models/data.model';
   standalone: true,
 })
 export class HardMathEquasionPipe implements PipeTransform {
-  constructor(private apiService: ApiService) {}
+  private apiService = inject(ApiService);
 
   // using @customMemoize() dont do anything
   // @customMemoize() // <= NOT caching HTTP responses

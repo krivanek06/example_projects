@@ -10,8 +10,31 @@ import { AnimeData } from '../../models/data.model';
 
 @Component({
   selector: 'app-search-anime',
-  templateUrl: './search-anime.component.html',
-  styleUrls: ['./search-anime.component.scss'],
+  template: `
+    <mat-form-field>
+      <mat-label>search anime</mat-label>
+      <input matInput [formControl]="searchControl" [matAutocomplete]="auto" />
+      <mat-hint>At least 3 characters</mat-hint>
+
+      <!-- display options -->
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="animeDisplayWith">
+        <mat-option
+          *ngFor="let option of searchedData$ | async"
+          [value]="option"
+          (onSelectionChange)="onSelectionChange(option, $event)"
+        >
+          [{{ option.source }}]: {{ option.title_english ?? option.title }} ({{ option.duration }})
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  `,
+  styles: [
+    `
+      mat-form-field {
+        width: 100%;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatAutocompleteModule, MatInputModule],

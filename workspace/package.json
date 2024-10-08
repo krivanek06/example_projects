@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "angular:serve": "nx run app-angular:serve",
-    "angular:build": "nx run app-angular:build",
+    "angular:build": "nx run app-angular:build --output-hashing=none",
     "angular:lib:elements:build": "nx build angular-elements",
     "ts:examples:serve": "nodemon libs/typescript-examples/src/index.ts"
   },
